@@ -50,9 +50,10 @@ header{position:sticky; top:0; z-index:80; background:rgba(7,13,24,.72);
   box-shadow:0 3px 14px rgba(201,164,78,.34)}
 .brand .bt{font-weight:700; font-size:18px; letter-spacing:-.01em; line-height:1.05}
 .brand .bs{font-size:10.5px; color:var(--muted); letter-spacing:.02em; margin-top:3px; line-height:1}
-.navlinks{display:flex; align-items:center; gap:2px; margin:0 auto}
-.navlinks a{padding:8px 12px; border-radius:9px; font-size:14px; color:var(--muted2); font-weight:500;
-  transition:color .15s, background .15s; display:flex; align-items:center; gap:5px; position:relative}
+.navlinks{display:flex; align-items:center; gap:1px; margin:0 auto; flex-wrap:nowrap}
+.navlinks a{padding:8px 10px; border-radius:9px; font-size:13.5px; color:var(--muted2); font-weight:500;
+  transition:color .15s, background .15s; display:flex; align-items:center; gap:5px; position:relative;
+  white-space:nowrap; flex:0 0 auto}
 .navlinks a:hover{color:var(--text); background:rgba(255,255,255,.04)}
 .navlinks a.active{color:var(--gold)}
 .navlinks a.active::after{content:""; position:absolute; left:12px; right:12px; bottom:-1px; height:2px;
