@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download Vestora — Your financial OS, on your device</title>
+<meta name="description" content="Download Vestora — the AI-powered finance app that runs locally on your device. No cloud. No tracking. Complete privacy. Free to start, upgrade anytime.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2316264a'/%3E%3Cpath d='M15 4 L28 28 L28 4 Z' fill='%23c9a44e'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vestora.css">
+<style>
+.dl-hero{display:grid; grid-template-columns:.9fr 1.1fr; gap:36px; align-items:center; padding:40px 0 24px}
+.dl-hero .h1{font-size:48px}
+.dl-mini{display:flex; gap:22px; flex-wrap:wrap; margin:22px 0 26px}
+.dl-mini .m{display:flex; align-items:center; gap:9px}
+.dl-mini .m .mi{width:38px; height:38px; border-radius:11px; display:grid; place-items:center; border:1px solid var(--border); background:rgba(255,255,255,.02); color:var(--gold); flex:none}
+.dl-mini .m b{font-size:12.5px; display:block} .dl-mini .m span{font-size:10.5px; color:var(--muted)}
+.plat-label{font-size:14px; color:var(--muted2); margin-bottom:12px}
+.platforms4{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; max-width:520px}
+.platcard{background:var(--panel); border:1px solid var(--border2); border-radius:14px; padding:16px 14px; text-align:center;
+  transition:transform .18s var(--ease), border-color .18s; cursor:pointer}
+.platcard:hover{transform:translateY(-3px); border-color:var(--border)}
+.platcard.soon{opacity:.72; cursor:default}
+.platcard .pfi{width:40px; height:40px; margin:0 auto 10px; display:grid; place-items:center; color:var(--text)}
+.platcard b{font-size:13.5px; display:block; margin-bottom:5px}
+.platcard .dl{font-size:11px; color:var(--gold); display:flex; align-items:center; justify-content:center; gap:5px; font-weight:600}
+.platcard.soon .dl{color:var(--muted)}
+.free-note{display:flex; align-items:center; gap:9px; font-size:13px; color:var(--muted2); margin-top:18px}
+.free-note svg{color:var(--gold)}
+/* device showcase */
+.showcase{position:relative; height:420px}
+.sc-laptop{position:absolute; left:0; top:20px; width:78%; background:#0b1120; border:2px solid var(--border);
+  border-radius:14px; padding:12px; box-shadow:0 40px 80px rgba(0,0,0,.6)}
+.sc-laptop .bar{display:flex; gap:5px; margin-bottom:10px} .sc-laptop .bar i{width:9px;height:9px;border-radius:50%;background:var(--border)}
+.sc-phone{position:absolute; right:0; bottom:0; width:150px; background:#0b1120; border:2px solid var(--border);
+  border-radius:22px; padding:10px; box-shadow:0 30px 60px rgba(0,0,0,.7); z-index:2}
+.sc-net{font-size:9px;color:var(--muted)} .sc-big{font-size:20px;font-weight:700} .sc-up{font-size:9px;color:var(--pos)}
+.sc-chart{height:60px;margin:8px 0;border-radius:8px;background:linear-gradient(180deg,rgba(201,164,78,.12),transparent);position:relative;overflow:hidden}
+.sc-chart svg{position:absolute;inset:0;width:100%;height:100%}
+.sc-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sc-card{background:rgba(255,255,255,.03);border-radius:8px;padding:8px;font-size:8px;color:var(--muted)}
+.sc-card b{display:block;font-size:11px;color:var(--text)}
+.sc-donut{width:34px;height:34px;border-radius:50%;background:conic-gradient(var(--pos) 0 45%,var(--blue) 45% 70%,var(--gold) 70% 90%,var(--purp) 90% 100%);position:relative;margin-top:4px}
+.sc-donut::before{content:"";position:absolute;inset:5px;border-radius:50%;background:#0b1120}
+.databadge{position:absolute; bottom:40px; left:36%; background:rgba(14,22,38,.95); border:1px solid var(--border);
+  border-radius:11px; padding:10px 13px; display:flex; gap:9px; align-items:center; box-shadow:0 14px 30px rgba(0,0,0,.5); z-index:3}
+.databadge .di{width:26px;height:26px;border-radius:7px;background:rgba(201,164,78,.12);color:var(--gold);display:grid;place-items:center;flex:none}
+.databadge b{font-size:11px;display:block;line-height:1.2} .databadge span{font-size:9.5px;color:var(--muted)}
+/* how it works */
+.hw5{display:flex; justify-content:space-between; gap:8px; position:relative}
+.hw5::before{content:"";position:absolute;top:32px;left:8%;right:8%;height:1px;border-top:1px dashed var(--border)}
+.hw{text-align:center; flex:1; position:relative; z-index:1}
+.hw .hi{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;border:1px solid rgba(201,164,78,.4);background:var(--bg);color:var(--gold)}
+.hw b{font-size:14px;display:block;margin-bottom:6px} .hw p{font-size:12px;color:var(--muted);line-height:1.45}
+/* why local */
+.local-grid{display:grid; grid-template-columns:1.2fr 2fr; gap:26px; align-items:center}
+.local-checks{list-style:none;display:flex;flex-direction:column;gap:12px}
+.local-checks li{display:flex;align-items:center;gap:10px;font-size:14px}
+.local-checks .c{width:22px;height:22px;border-radius:7px;background:rgba(52,211,153,.14);color:var(--pos);display:grid;place-items:center;flex:none}
+.why4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.why4 .w{text-align:center}
+.why4 .w .wi{width:52px;height:52px;border-radius:14px;margin:0 auto 12px;display:grid;place-items:center;border:1px solid var(--border);background:rgba(255,255,255,.02);color:var(--gold)}
+.why4 .w b{font-size:13.5px;display:block;margin-bottom:6px} .why4 .w p{font-size:11.5px;color:var(--muted);line-height:1.45}
+/* system requirements */
+.sysreq{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.sysreq .s{display:flex;gap:12px}
+.sysreq .s .si{width:34px;height:34px;flex:none;color:var(--text)}
+.sysreq .s b{font-size:14px;display:block;margin-bottom:6px}
+.sysreq .s p{font-size:11.5px;color:var(--muted);line-height:1.6}
+.sysreq .s .soon2{font-size:9.5px;font-weight:700;color:var(--purp);background:rgba(169,154,240,.14);border-radius:99px;padding:2px 8px;display:inline-block;margin-top:4px}
+/* final cta */
+.fcta2{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center}
+.fcta2 .mk{width:64px;height:64px;border-radius:16px;flex:none;background:linear-gradient(120deg,#16264a 0 46%,var(--gold) 52% 100%);box-shadow:0 8px 26px rgba(201,164,78,.3)}
+@media (max-width:960px){
+  .dl-hero{grid-template-columns:1fr} .showcase{height:340px} .hw5{flex-wrap:wrap;gap:20px} .hw5::before{display:none} .hw{flex:0 0 40%}
+  .local-grid{grid-template-columns:1fr} .why4{grid-template-columns:1fr 1fr} .sysreq{grid-template-columns:1fr 1fr}
+  .platforms4{max-width:none} .fcta2{grid-template-columns:1fr;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><span class="mark"></span><span><span class="bt">Vestora</span><span class="bs">Build Wealth. With Clarity.</span></span></a>
+    <nav class="navlinks">
+      <a href="why-vestora.html">Why Vestora</a><a href="features.html">Features</a>
+      <a href="ai-copilot.html">AI Copilot</a><a href="security.html">Security</a><a href="pricing.html">Pricing</a><a href="roadmap.html">Roadmap</a>
+      <span class="dropdown"><a href="download.html" class="active">Resources <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown-menu"><a href="download.html">Download</a><a href="features.html">Features</a><a href="roadmap.html">Roadmap</a><a href="https://github.com/upasanikn-sys/vestora">GitHub</a><a href="mailto:hello@vestora.app">Contact</a></div>
+      </span>
+    </nav>
+    <div class="nav-cta">
+      <a class="login" href="download.html">Login</a>
+      <a class="btn btn-gold js-dl" href="#download" data-os="Windows"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Download Vestora</a>
+      <button class="menu-btn" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu">
+  <a href="why-vestora.html">Why Vestora</a><a href="features.html">Features</a><a href="ai-copilot.html">AI Copilot</a>
+  <a href="security.html">Security</a><a href="pricing.html">Pricing</a><a href="roadmap.html">Roadmap</a><a href="download.html">Download</a>
+  <a class="btn btn-gold" href="#download">Download Vestora</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="download" style="padding-top:16px">
+  <div class="glow" style="width:480px;height:480px;background:rgba(201,164,78,.08);top:-100px;right:-90px"></div>
+  <div class="wrap dl-hero">
+    <div>
+      <span class="eyebrow">100% Local. 100% Private.</span>
+      <h1 class="h1 serif">Your financial OS.<br><span class="l2">Download Vestora.</span></h1>
+      <p class="lead">The AI-powered finance app that runs locally on your device. No cloud. No tracking. Complete privacy.</p>
+      <div class="dl-mini">
+        <div class="m"><span class="mi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span><div><b>Runs locally</b><span>on your device</span></div></div>
+        <div class="m"><span class="mi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 18a5 5 0 01-1-9.9A6 6 0 0118 9a4 4 0 010 9H7z"/></svg></span><div><b>No cloud</b><span>required</span></div></div>
+        <div class="m"><span class="mi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3"/><path d="M6 20a6 6 0 0112 0"/></svg></span><div><b>You own</b><span>your data</span></div></div>
+      </div>
+      <div class="plat-label">Download for your platform</div>
+      <div class="platforms4">
+        <a class="platcard js-dl" href="#download" data-os="Windows"><span class="pfi"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4.5l8-1.1v8.1H3zM3 12.5h8v8.1l-8-1.1zM12 3.3L21 2v9.5h-9zM12 12.5h9V22l-9-1.3z"/></svg></span><b>Windows</b><span class="dl">Download <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg></span></a>
+        <a class="platcard" href="#notify" data-notify="macOS"><span class="pfi"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.5-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.1.8-1.2 1.2-2.4 1.2-2.4s-2.2-.9-2.7-3.5zM14.3 5.4c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1 1.8-.9 2.8 1 .1 2-.5 2.6-1.3z"/></svg></span><b>macOS</b><span class="dl">Download <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg></span></a>
+        <a class="platcard" href="#notify" data-notify="Android"><span class="pfi" style="color:var(--pos)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 8l-1.5-2.6M17 8l1.5-2.6M5 9h14v8a2 2 0 01-2 2H7a2 2 0 01-2-2V9zM9.5 6A1 1 0 119.5 5M14.5 6A1 1 0 1114.5 5"/></svg></span><b>Android</b><span class="dl">Download <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg></span></a>
+        <div class="platcard soon"><span class="pfi"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.5-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.1z"/></svg></span><b>iOS</b><span class="dl">Coming Soon</span></div>
+      </div>
+      <div class="free-note"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/></svg>Free to start. Upgrade anytime.</div>
+    </div>
+
+    <!-- showcase -->
+    <div class="showcase">
+      <div class="sc-laptop">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div><div class="sc-net">Net Worth</div><div class="sc-big">₹28,75,000</div><div class="sc-up">▲ ₹1,25,000 (4.56%)</div></div>
+        </div>
+        <div class="sc-chart"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><polyline points="0,34 12,30 24,32 36,24 48,26 60,16 72,20 84,10 100,4" fill="none" stroke="var(--gold)" stroke-width="2"/></svg></div>
+        <div class="sc-cards">
+          <div class="sc-card">Cash Flow<b>₹1,45,000</b><span>Income</span></div>
+          <div class="sc-card" style="display:flex;justify-content:space-between;align-items:center">Top Categories<span class="sc-donut"></span></div>
+        </div>
+      </div>
+      <div class="sc-phone">
+        <div style="font-size:8px;color:var(--muted)">Good morning,</div>
+        <div style="font-size:13px;font-weight:700;margin-bottom:8px">Arjun 👋</div>
+        <div style="background:rgba(169,154,240,.1);border:1px solid rgba(169,154,240,.25);border-radius:9px;padding:8px;margin-bottom:8px"><div style="font-size:9px;font-weight:600;color:var(--purp)">✦ AI Copilot</div><div style="font-size:8px;color:var(--muted2);margin-top:2px">Ask anything about your finances</div></div>
+        <div class="sc-net">Net Worth</div><div class="sc-big" style="font-size:16px">₹28,75,000</div><div class="sc-up">▲ 4.56% this month</div>
+        <div class="sc-chart" style="height:40px"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><polyline points="0,32 20,26 40,28 60,16 80,20 100,8" fill="none" stroke="var(--gold)" stroke-width="2"/></svg></div>
+        <div style="font-size:8px;color:var(--muted)">Recent Transactions</div>
+        <div style="display:flex;justify-content:space-between;font-size:8px;margin-top:5px"><span>🟢 Salary</span><b class="pos" style="color:var(--pos)">+₹1,20,000</b></div>
+        <div style="display:flex;justify-content:space-between;font-size:8px;margin-top:3px"><span>🔴 Zomato</span><b class="neg" style="color:var(--neg)">-₹1,250</b></div>
+        <div style="display:flex;justify-content:space-between;font-size:8px;margin-top:3px"><span>🔵 Mutual Fund SIP</span><b class="neg" style="color:var(--neg)">-₹15,000</b></div>
+      </div>
+      <div class="databadge"><span class="di"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/></svg></span><div><b>Your data never leaves</b><span>your device. Ever.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW VESTORA WORKS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="band">
+      <h2 class="serif" style="text-align:center;font-size:28px;letter-spacing:-.02em;margin-bottom:34px">How Vestora works</h2>
+      <div class="hw5">
+        <div class="hw"><span class="hi"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg></span><b>1. Download</b><p>Get Vestora on your device in seconds.</p></div>
+        <div class="hw"><span class="hi"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></span><b>2. Set up</b><p>All data stays local. No signup required.</p></div>
+        <div class="hw"><span class="hi"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><b>3. Add your data</b><p>Import or enter your financial information.</p></div>
+        <div class="hw"><span class="hi"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9z"/></svg></span><b>4. Get insights</b><p>AI Copilot analyzes your data, locally.</p></div>
+        <div class="hw"><span class="hi"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></span><b>5. Take control</b><p>Make better decisions. Build wealth with clarity.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY LOCAL-FIRST -->
+<section class="sec">
+  <div class="wrap">
+    <div class="local-grid">
+      <div>
+        <h2 class="serif" style="font-size:26px;letter-spacing:-.02em;margin-bottom:16px">Why local-first?</h2>
+        <ul class="local-checks">
+          <li><span class="c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Your data stays on your device</li>
+          <li><span class="c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Works offline, anytime</li>
+          <li><span class="c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>No tracking. No profiling. No ads.</li>
+          <li><span class="c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Faster, more secure, more private</li>
+          <li><span class="c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>You own your data. Always.</li>
+        </ul>
+      </div>
+      <div class="why4">
+        <div class="w"><span class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3a9 9 0 100 18M12 3a9 9 0 010 18M12 3v9l5 3"/></svg></span><b>Blazing Fast</b><p>Built for speed. Everything runs locally.</p></div>
+        <div class="w"><span class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/><path d="M12 8v4M12 15h.01"/></svg></span><b>Bank-Grade Security</b><p>AES-256 encryption protects your data at rest.</p></div>
+        <div class="w"><span class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12.5a7 7 0 0114 0M8.5 15.5a3.5 3.5 0 017 0M12 18.5h.01"/></svg></span><b>Works Offline</b><p>Access your data anytime, even without internet.</p></div>
+        <div class="w"><span class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></span><b>Lightweight</b><p>Small install size. Doesn't slow down your system.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEM REQUIREMENTS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="band">
+      <h2 class="serif" style="font-size:24px;letter-spacing:-.02em;margin-bottom:24px">System requirements</h2>
+      <div class="sysreq">
+        <div class="s"><span class="si"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4.5l8-1.1v8.1H3zM3 12.5h8v8.1l-8-1.1zM12 3.3L21 2v9.5h-9zM12 12.5h9V22l-9-1.3z"/></svg></span><div><b>Windows</b><p>Windows 10 (64-bit)<br>4GB RAM or more<br>200MB free space</p></div></div>
+        <div class="s"><span class="si"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.5-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.1.8-1.2 1.2-2.4 1.2-2.4s-2.2-.9-2.7-3.5zM14.3 5.4c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1 1.8-.9 2.8 1 .1 2-.5 2.6-1.3z"/></svg></span><div><b>macOS</b><p>macOS 11 Big Sur<br>4GB RAM or more<br>200MB free space</p></div></div>
+        <div class="s"><span class="si" style="color:var(--pos)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 8l-1.5-2.6M17 8l1.5-2.6M5 9h14v8a2 2 0 01-2 2H7a2 2 0 01-2-2V9zM9.5 6A1 1 0 119.5 5M14.5 6A1 1 0 1114.5 5"/></svg></span><div><b>Android</b><p>Android 8.0 (Oreo) or later<br>2GB RAM or more</p></div></div>
+        <div class="s"><span class="si"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.5-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.1z"/></svg></span><div><b>iOS</b><p>iOS 14.0 or later<br>iPhone 8 or later</p><span class="soon2">Coming Soon</span></div></div>
+      </div>
+      <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:20px">Vestora is optimized for both Intel and Apple Silicon (M1/M2/M3) processors.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM TRUST STRIP -->
+<section class="sec">
+  <div class="wrap">
+    <p style="text-align:center;font-size:14px;color:var(--muted2);margin:0 0 18px">Trusted by thousands who value privacy and clarity.</p>
+    <div class="foot-trust">
+      <div class="fti"><span class="fic" style="color:var(--pos)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span><div><b>100% Local-First</b><span>Your data stays on your device.</span></div></div>
+      <div class="fti"><span class="fic" style="color:var(--blue)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 18a5 5 0 01-1-9.9A6 6 0 0118 9a4 4 0 010 9H7z"/></svg></span><div><b>No Cloud Required</b><span>We never store your data.</span></div></div>
+      <div class="fti"><span class="fic" style="color:var(--neg)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M5 5l14 14"/></svg></span><div><b>No Tracking. No Ads.</b><span>Zero profiling. Ever.</span></div></div>
+      <div class="fti"><span class="fic" style="color:var(--gold)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/></svg></span><div><b>AES-256 Encrypted</b><span>Bank-grade security.</span></div></div>
+      <div class="fti"><span class="fic" style="color:var(--purp)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></span><div><b>Open &amp; Transparent</b><span>Our code and values are open.</span></div></div>
+      <div class="fti"><span class="fic" style="color:var(--teal)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3"/><path d="M6 20a6 6 0 0112 0"/></svg></span><div><b>Built for You</b><span>Designed to improve your financial life.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <div class="final-band" style="display:block">
+      <div class="glow" style="width:360px;height:360px;background:rgba(201,164,78,.12);bottom:-160px;left:-60px"></div>
+      <div class="fcta2">
+        <span class="mk"></span>
+        <div>
+          <h2 class="serif" style="font-size:28px;letter-spacing:-.02em">Take control of your finances.<br><span class="gold">Download Vestora today.</span></h2>
+          <p style="font-size:14px;color:var(--muted2);margin-top:8px">Free to start. Your data. Your rules.</p>
+        </div>
+        <div style="text-align:right">
+          <a class="btn btn-gold js-dl" href="#download" data-os="Windows"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Download Vestora</a>
+          <div style="font-size:12px;color:var(--muted);margin-top:10px">Free forever · Upgrade anytime</div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:24px">Questions? Visit our <a href="mailto:hello@vestora.app" class="gold">Help Center</a> or <a href="mailto:hello@vestora.app" class="gold">Contact Us</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="margin-top:20px">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><span class="mark"></span><span><span class="bt">Vestora</span><span class="bs">Build Wealth. With Clarity.</span></span></a>
+        <p>A privacy-first financial operating system. Understand, grow and protect your wealth with AI — running entirely on your own device.</p>
+        <div class="trust-row"><div class="ti"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>No cloud · No accounts · No tracking</div></div>
+      </div>
+      <div class="foot-col"><h5>Product</h5><a href="why-vestora.html">Why Vestora</a><a href="features.html">Features</a><a href="ai-copilot.html">AI Copilot</a><a href="security.html">Security</a><a href="pricing.html">Pricing</a><a href="roadmap.html">Roadmap</a></div>
+      <div class="foot-col"><h5>Download</h5><a href="#download" class="js-dl" data-os="Windows">Windows app</a><a href="#notify" data-notify="macOS">macOS</a><a href="#notify" data-notify="mobile">Android &amp; iOS</a><a href="#notify" data-notify="Linux">Linux</a></div>
+      <div class="foot-col"><h5>Company</h5><a href="why-vestora.html">About</a><a href="mailto:hello@vestora.app">Contact</a><a href="https://github.com/upasanikn-sys/vestora">GitHub</a><a href="security.html">Privacy</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span class="discl">Vestora is a personal tracking &amp; planning tool — not SEBI-registered investment advice, and it never moves real money. Market data is delayed and unofficial. © 2026 Vestora.</span>
+      <span>Made in India 🇮🇳</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/vestora.js" defer></script>
+</body>
+</html>

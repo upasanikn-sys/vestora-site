@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security &amp; Privacy — Your data is yours. Always. | Vestora</title>
+<meta name="description" content="Vestora is built with a privacy-first architecture that keeps your financial life completely under your control. 100% local-first, AES-256 encrypted, no cloud required, no tracking, no ads.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2316264a'/%3E%3Cpath d='M15 4 L28 28 L28 4 Z' fill='%23c9a44e'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vestora.css">
+<style>
+.sec-hero{display:grid; grid-template-columns:.95fr 1.05fr; gap:40px; align-items:center; padding:44px 0 24px}
+.sec-hero .h1{font-size:46px}
+.sec-checks{list-style:none; display:flex; flex-direction:column; gap:16px; margin:24px 0 26px}
+.sec-checks li{display:flex; gap:12px; align-items:flex-start}
+.sec-checks .ci{width:32px; height:32px; border-radius:9px; flex:none; display:grid; place-items:center; background:rgba(201,164,78,.1); color:var(--gold)}
+.sec-checks b{font-size:14.5px; font-weight:600; display:block}
+.sec-checks span{font-size:12.5px; color:var(--muted)}
+/* shield hero */
+.shieldbox{position:relative; height:400px; display:grid; place-items:center}
+.shieldbox .glowc{position:absolute; width:320px; height:320px; border-radius:50%; background:radial-gradient(circle,rgba(201,164,78,.22),transparent 65%); filter:blur(10px)}
+.shield-svg{position:relative; z-index:2; filter:drop-shadow(0 0 30px rgba(201,164,78,.5))}
+.orbchip{position:absolute; z-index:3; background:rgba(14,22,38,.9); border:1px solid var(--border); border-radius:12px; padding:10px 12px; display:flex; gap:9px; align-items:center; box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.orbchip .oi{width:26px; height:26px; border-radius:7px; display:grid; place-items:center; flex:none; color:var(--gold); background:rgba(201,164,78,.12)}
+.orbchip b{font-size:11.5px; font-weight:600; display:block; line-height:1.2}
+.orbchip span{font-size:9.5px; color:var(--muted)}
+/* VS table */
+.vsband{display:grid; grid-template-columns:.85fr 1.15fr; gap:30px; align-items:center}
+.vstable{display:grid; grid-template-columns:1fr auto 1fr; gap:8px 14px; align-items:center}
+.vshead{display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; padding-bottom:6px}
+.vshead.bad{color:var(--muted2)} .vshead.good{color:var(--gold); justify-content:flex-end}
+.vshead svg{flex:none}
+.vscell{display:flex; align-items:center; gap:9px; font-size:12.5px; color:var(--muted2)}
+.vscell.good{justify-content:flex-end}
+.vscell .x{width:20px; height:20px; border-radius:6px; background:rgba(248,113,113,.14); color:var(--neg); display:grid; place-items:center; flex:none}
+.vscell .c{width:20px; height:20px; border-radius:6px; background:rgba(52,211,153,.14); color:var(--pos); display:grid; place-items:center; flex:none}
+.vsmid{text-align:center; font-size:11px; color:var(--muted); font-weight:500}
+.vsvs{width:34px; height:34px; border-radius:50%; border:1px solid var(--border); background:var(--panel2); display:grid; place-items:center; font-size:11px; font-weight:700; color:var(--muted); margin:0 auto}
+/* architecture flow */
+.arch{display:grid; grid-template-columns:2.2fr 1fr; gap:30px; align-items:center}
+.archflow{display:flex; align-items:flex-start; justify-content:space-between; gap:6px}
+.archstep{text-align:center; flex:1}
+.archstep .as{width:58px; height:58px; border-radius:16px; margin:0 auto 12px; display:grid; place-items:center; border:1px solid var(--border); background:var(--panel2)}
+.archstep b{font-size:12.5px; font-weight:600; display:block; margin-bottom:5px}
+.archstep p{font-size:10.5px; color:var(--muted); line-height:1.4; margin-bottom:8px}
+.archstep .sub{font-size:10px; color:var(--muted2); font-weight:600}
+.archarrow{color:var(--muted); align-self:center; padding-top:20px}
+.control{display:flex; flex-direction:column; gap:12px}
+.control li{display:flex; align-items:center; gap:10px; font-size:13px; list-style:none}
+.control .c{width:22px; height:22px; border-radius:7px; background:rgba(52,211,153,.14); color:var(--pos); display:grid; place-items:center; flex:none}
+/* hood 6 cards */
+.hood{display:grid; grid-template-columns:repeat(6,1fr); gap:12px}
+.hoodc{background:var(--panel2); border:1px solid var(--border2); border-radius:14px; padding:16px 12px; text-align:center}
+.hoodc .hi{width:44px; height:44px; border-radius:12px; margin:0 auto 12px; display:grid; place-items:center; border:1px solid var(--border); background:rgba(255,255,255,.02)}
+.hoodc h4{font-size:12.5px; font-weight:600; margin-bottom:6px}
+.hoodc p{font-size:10.5px; color:var(--muted); line-height:1.45}
+/* device + promise */
+.devrow{display:grid; grid-template-columns:1.2fr 1fr; gap:24px}
+.platforms{display:flex; gap:24px; margin-top:20px; flex-wrap:wrap}
+.platforms .pf{text-align:center}
+.platforms .pf .pfi{width:44px; height:44px; border-radius:12px; margin:0 auto 8px; display:grid; place-items:center; border:1px solid var(--border); background:rgba(255,255,255,.02); color:var(--text)}
+.platforms .pf span{font-size:11px; color:var(--muted)}
+.promise{background:radial-gradient(120% 120% at 0 0,rgba(201,164,78,.1),transparent 60%),var(--panel);
+  border:1px solid rgba(201,164,78,.25); border-radius:16px; padding:26px; display:flex; gap:16px; align-items:flex-start}
+.promise .ps{width:52px; height:52px; border-radius:14px; flex:none; display:grid; place-items:center; border:1px solid rgba(201,164,78,.4); color:var(--gold); background:rgba(201,164,78,.08)}
+@media (max-width:960px){
+  .sec-hero,.vsband,.arch,.devrow{grid-template-columns:1fr}
+  .hood{grid-template-columns:repeat(3,1fr)}
+  .archflow{flex-wrap:wrap; justify-content:center; gap:18px} .archstep{flex:0 0 40%} .archarrow{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><span class="mark"></span><span><span class="bt">Vestora</span><span class="bs">Build Wealth. With Clarity.</span></span></a>
+    <nav class="navlinks">
+      <a href="why-vestora.html">Why Vestora</a><a href="features.html">Features</a>
+      <a href="ai-copilot.html">AI Copilot</a><a href="security.html" class="active">Security</a><a href="pricing.html">Pricing</a>
+      <span class="dropdown"><a href="download.html">Resources <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown-menu"><a href="download.html">Download</a><a href="features.html">Features</a><a href="roadmap.html">Roadmap</a><a href="https://github.com/upasanikn-sys/vestora">GitHub</a><a href="mailto:hello@vestora.app">Contact</a></div>
+      </span>
+      <a href="roadmap.html">Roadmap</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="login" href="download.html">Login</a>
+      <a class="btn btn-gold" href="download.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Download Vestora</a>
+      <button class="menu-btn" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu">
+  <a href="why-vestora.html">Why Vestora</a><a href="features.html">Features</a><a href="ai-copilot.html">AI Copilot</a>
+  <a href="security.html">Security</a><a href="pricing.html">Pricing</a><a href="roadmap.html">Roadmap</a><a href="download.html">Download</a>
+  <a class="btn btn-gold" href="download.html">Download Vestora</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:16px">
+  <div class="wrap sec-hero">
+    <div>
+      <span class="eyebrow">Privacy isn't a feature. It's our foundation.</span>
+      <h1 class="h1 serif">Your data is yours.<br><span class="l2">Always has been.</span></h1>
+      <p class="lead">Vestora is built with a privacy-first architecture that keeps your financial life completely under your control.</p>
+      <ul class="sec-checks">
+        <li><span class="ci"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span><div><b>100% Local-First</b><span>Your data lives on your device, not on our servers.</span></div></li>
+        <li><span class="ci"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 18a5 5 0 01-1-9.9A6 6 0 0118 9a4 4 0 010 9H7z"/><path d="M6 6l12 12"/></svg></span><div><b>No Cloud Required</b><span>Vestora works fully offline. Cloud is completely optional.</span></div></li>
+        <li><span class="ci"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M5 5l14 14"/></svg></span><div><b>No Tracking. No Ads.</b><span>We don't track you. We don't profile you. We don't sell anything.</span></div></li>
+        <li><span class="ci"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></span><div><b>Bank-Grade Security</b><span>AES-256 encryption protects your data at rest and in transit.</span></div></li>
+      </ul>
+      <div class="hero-btns">
+        <a class="btn btn-gold" href="download.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Download Vestora</a>
+        <a class="btn btn-ghost" href="#architecture"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z" fill="currentColor" stroke="none"/></svg>View our architecture</a>
+      </div>
+    </div>
+    <div class="shieldbox">
+      <div class="glowc"></div>
+      <svg class="shield-svg" width="180" height="200" viewBox="0 0 100 116" fill="none">
+        <path d="M50 4 L92 20 V56 C92 84 74 102 50 112 C26 102 8 84 8 56 V20 Z" fill="rgba(201,164,78,.06)" stroke="var(--gold)" stroke-width="2.5"/>
+        <rect x="34" y="44" width="32" height="30" rx="8" fill="#0e1626" stroke="rgba(201,164,78,.5)" stroke-width="1.5"/>
+        <path d="M42 44 L42 40 a8 8 0 0116 0 L58 44" stroke="var(--gold)" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="orbchip" style="top:10%;left:50%;transform:translateX(-50%)"><span class="oi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 18a5 5 0 01-1-9.9A6 6 0 0118 9a4 4 0 010 9H7z"/><path d="M6 6l12 12"/></svg></span><div><b>No Cloud</b><span>Your data stays offline</span></div></div>
+      <div class="orbchip" style="top:32%;left:2%"><span class="oi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span><div><b>Encrypted</b><span>AES-256 End-to-end</span></div></div>
+      <div class="orbchip" style="top:32%;right:2%"><span class="oi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span><div><b>Local First</b><span>Runs on your device</span></div></div>
+      <div class="orbchip" style="bottom:22%;left:2%"><span class="oi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3"/><path d="M6 20a6 6 0 0112 0"/></svg></span><div><b>Private</b><span>No tracking. No profiling.</span></div></div>
+      <div class="orbchip" style="bottom:22%;right:2%"><span class="oi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/></svg></span><div><b>You Own It</b><span>Your data. Always.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- THE VESTORA DIFFERENCE -->
+<section class="sec">
+  <div class="wrap">
+    <div class="band">
+      <div class="vsband">
+        <div>
+          <h2 class="serif" style="font-size:30px;letter-spacing:-.02em;margin-bottom:16px">The Vestora Difference</h2>
+          <p style="font-size:15px;color:var(--muted2);line-height:1.6;max-width:360px">Most apps put your data in the cloud. Vestora keeps it where it belongs — with you.</p>
+          <div style="width:44px;height:3px;background:var(--gold);border-radius:2px;margin-top:22px"></div>
+        </div>
+        <div class="vstable">
+          <div class="vshead bad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 18a5 5 0 01-1-9.9A6 6 0 0118 9a4 4 0 010 9H7z"/></svg>Most Finance Apps</div>
+          <div class="vsvs">VS</div>
+          <div class="vshead good">Vestora <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/></svg></div>
+
+          <div class="vscell bad"><span class="x"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Cloud Servers</div>
+          <div class="vsmid">Where data lives</div>
+          <div class="vscell good">Your Device Only <span class="c"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span></div>
+
+          <div class="vscell bad"><span class="x"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Always required</div>
+          <div class="vsmid">Internet Required</div>
+          <div class="vscell good">Never (Optional) <span class="c"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span></div>
+
+          <div class="vscell bad"><span class="x"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Company Access</div>
+          <div class="vsmid">Who can see it</div>
+          <div class="vscell good">You Only <span class="c"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span></div>
+
+          <div class="vscell bad"><span class="x"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Tracking &amp; Profiling</div>
+          <div class="vsmid">Tracking &amp; Profiling</div>
+          <div class="vscell good">No <span class="c"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span></div>
+
+          <div class="vscell bad"><span class="x"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Data Monetization</div>
+          <div class="vsmid">Data Monetization</div>
+          <div class="vscell good">No <span class="c"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span></div>
+
+          <div class="vscell bad"><span class="x"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Rarely works offline</div>
+          <div class="vsmid">Works Offline</div>
+          <div class="vscell good">Yes <span class="c"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span></div>
+
+          <div class="vscell bad"><span class="x"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg></span>They own it</div>
+          <div class="vsmid">You Own Your Data</div>
+          <div class="vscell good">Yes <span class="c"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="sec" id="architecture">
+  <div class="wrap">
+    <div class="band">
+      <h2 class="serif" style="font-size:26px;letter-spacing:-.02em;margin-bottom:28px">Built on a privacy-first architecture</h2>
+      <div class="arch">
+        <div class="archflow">
+          <div class="archstep"><div class="as ic-p"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><b>Your Device</b><p>All data is stored locally on your device.</p><div class="sub">You are in control.</div></div>
+          <div class="archarrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="archstep"><div class="as ic-g"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div><b>Encrypt Everything</b><p>AES-256 encryption protects your data at all times.</p><div class="sub">Bank-grade security.</div></div>
+          <div class="archarrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="archstep"><div class="as ic-b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 18a5 5 0 01-1-9.9A6 6 0 0118 9a4 4 0 010 9H7z"/><path d="M6 6l12 12"/></svg></div><b>No Cloud by Default</b><p>No servers. No cloud. Nothing leaves your device.</p><div class="sub">Privacy by design.</div></div>
+          <div class="archarrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="archstep"><div class="as ic-p"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12a8 8 0 0114-5M20 12a8 8 0 01-14 5M18 4v3h-3M6 20v-3h3"/></svg></div><b>Optional Sync</b><p>Choose to sync with your own encrypted cloud provider.</p><div class="sub">You decide.</div></div>
+          <div class="archarrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="archstep"><div class="as ic-o"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3"/><path d="M6 20a6 6 0 0112 0"/></svg></div><b>You Own Your Data</b><p>Export. Backup. Restore. Your data, your lifetime.</p><div class="sub">Always yours.</div></div>
+        </div>
+        <div>
+          <h4 class="serif" style="font-size:18px;margin-bottom:16px">You're always in control</h4>
+          <ul class="control">
+            <li><span class="c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Export your data anytime</li>
+            <li><span class="c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Backup to your own cloud</li>
+            <li><span class="c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Delete everything instantly</li>
+            <li><span class="c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>No lock-in. Ever.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY UNDER THE HOOD -->
+<section class="sec">
+  <div class="wrap">
+    <div class="band">
+      <h2 class="serif" style="font-size:26px;letter-spacing:-.02em;margin-bottom:24px">Security under the hood</h2>
+      <div class="hood">
+        <div class="hoodc"><div class="hi ic-p"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></div><h4>AES-256 Encryption</h4><p>Military-grade encryption for all your sensitive financial data.</p></div>
+        <div class="hoodc"><div class="hi ic-t"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div><h4>Local Database</h4><p>Encrypted SQLite database stored locally on your device.</p></div>
+        <div class="hoodc"><div class="hi ic-b"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 11a3 3 0 013 3v3M8 8a6 6 0 018 0M6 12a8 8 0 0113-6M9 20a6 6 0 01-1-4"/></svg></div><h4>Biometric Lock</h4><p>Protect Vestora with Face ID, Touch ID or PIN.</p></div>
+        <div class="hoodc"><div class="hi ic-p"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 18a5 5 0 01-1-9.9A6 6 0 0118 9a4 4 0 010 9H7z"/><path d="M12 11v5M9.5 13.5L12 11l2.5 2.5"/></svg></div><h4>Secure Backups</h4><p>Encrypted backups that only you can access and restore.</p></div>
+        <div class="hoodc"><div class="hi ic-g"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M5 5l14 14"/></svg></div><h4>No Third-Party Trackers</h4><p>We don't use analytics SDKs, trackers or advertising.</p></div>
+        <div class="hoodc"><div class="hi ic-o"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div><h4>Open &amp; Transparent</h4><p>We believe in transparency. We're building in the open, for you.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEVICE + PROMISE -->
+<section class="sec">
+  <div class="wrap">
+    <div class="devrow">
+      <div class="band">
+        <h3 class="serif" style="font-size:22px;margin-bottom:10px">Data stays on your device</h3>
+        <p style="font-size:14px;color:var(--muted2);line-height:1.6;max-width:420px">Vestora is 100% local-first. Your financial life never leaves your device unless you choose to export, sync or backup.</p>
+        <div class="platforms">
+          <div class="pf"><span class="pfi"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4.5l8-1.1v8.1H3zM3 12.5h8v8.1l-8-1.1zM12 3.3L21 2v9.5h-9zM12 12.5h9V22l-9-1.3z"/></svg></span><span>Windows</span></div>
+          <div class="pf"><span class="pfi"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.5-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.1.8-1.2 1.2-2.4 1.2-2.4s-2.2-.9-2.7-3.5zM14.3 5.4c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1 1.8-.9 2.8 1 .1 2-.5 2.6-1.3z"/></svg></span><span>macOS</span></div>
+          <div class="pf"><span class="pfi" style="color:var(--pos)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 8l-1.5-2.6M17 8l1.5-2.6M5 9h14v8a2 2 0 01-2 2H7a2 2 0 01-2-2V9zM9.5 6A1 1 0 119.5 5M14.5 6A1 1 0 1114.5 5"/></svg></span><span>Android</span></div>
+          <div class="pf"><span class="pfi"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.5-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.1z"/></svg></span><span>iOS</span></div>
+          <div class="pf"><span class="pfi" style="color:var(--gold)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3a3 3 0 016 3c0 3 2 4 2 8a5 5 0 01-10 0c0-4 2-5 2-8a3 3 0 010-3z"/></svg></span><span>Linux</span></div>
+        </div>
+      </div>
+      <div class="promise">
+        <span class="ps"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/><path d="M12 8v4M12 15h.01"/></svg></span>
+        <div>
+          <h4 class="serif" style="font-size:19px;margin-bottom:8px">Our privacy promise</h4>
+          <p style="font-size:13px;color:var(--muted2);line-height:1.6">We built Vestora because we believe privacy is a fundamental right — not a premium feature.</p>
+          <p class="gold" style="font-size:13.5px;font-weight:600;margin-top:10px">Your trust is our most valuable asset.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <div class="final-band">
+      <div class="glow" style="width:380px;height:380px;background:rgba(201,164,78,.12);bottom:-160px;right:-80px"></div>
+      <div class="final-copy">
+        <h2 class="serif">Your financial life.<br>Your data. <span class="gold">Your rules.</span></h2>
+      </div>
+      <div>
+        <div class="side-checks" style="margin-bottom:26px">
+          <div class="sc"><span class="si"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/></svg></span><b>Private by design</b></div>
+          <div class="sc"><span class="si"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span><b>Secure by default</b></div>
+          <div class="sc"><span class="si"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3"/><path d="M6 20a6 6 0 0112 0"/></svg></span><b>Yours forever</b></div>
+        </div>
+        <a class="btn btn-gold" href="download.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Download Vestora</a>
+        <div style="font-size:12px;color:var(--muted);margin-top:12px">Runs locally. Works offline.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM TRUST STRIP -->
+<section class="sec" style="padding-top:22px">
+  <div class="wrap">
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin:10px 0 16px">Trusted by people who value privacy and clarity.</p>
+    <div class="foot-trust">
+      <div class="fti"><span class="fic" style="color:var(--pos)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span><div><b>100% Local-First</b><span>Your data stays on your device.</span></div></div>
+      <div class="fti"><span class="fic" style="color:var(--blue)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 18a5 5 0 01-1-9.9A6 6 0 0118 9a4 4 0 010 9H7z"/></svg></span><div><b>No Cloud Required</b><span>Works offline. Always.</span></div></div>
+      <div class="fti"><span class="fic" style="color:var(--neg)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M5 5l14 14"/></svg></span><div><b>No Tracking. No Ads.</b><span>We respect your privacy.</span></div></div>
+      <div class="fti"><span class="fic" style="color:var(--gold)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/></svg></span><div><b>AES-256 Encrypted</b><span>Bank-grade security.</span></div></div>
+      <div class="fti"><span class="fic" style="color:var(--teal)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3"/><path d="M6 20a6 6 0 0112 0"/></svg></span><div><b>Built for India</b><span>Designed for the world.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="margin-top:0">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><span class="mark"></span><span><span class="bt">Vestora</span><span class="bs">Build Wealth. With Clarity.</span></span></a>
+        <p>A privacy-first financial operating system. Understand, grow and protect your wealth with AI — running entirely on your own device.</p>
+        <div class="trust-row"><div class="ti"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>No cloud · No accounts · No tracking</div></div>
+      </div>
+      <div class="foot-col"><h5>Product</h5><a href="why-vestora.html">Why Vestora</a><a href="features.html">Features</a><a href="ai-copilot.html">AI Copilot</a><a href="security.html">Security</a><a href="pricing.html">Pricing</a><a href="roadmap.html">Roadmap</a></div>
+      <div class="foot-col"><h5>Download</h5><a href="download.html" class="js-dl" data-os="Windows">Windows app</a><a href="#notify" data-notify="macOS">macOS</a><a href="#notify" data-notify="mobile">Android &amp; iOS</a><a href="#notify" data-notify="Linux">Linux</a></div>
+      <div class="foot-col"><h5>Company</h5><a href="why-vestora.html">About</a><a href="mailto:hello@vestora.app">Contact</a><a href="https://github.com/upasanikn-sys/vestora">GitHub</a><a href="security.html">Privacy</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span class="discl">Vestora is a personal tracking &amp; planning tool — not SEBI-registered investment advice, and it never moves real money. Market data is delayed and unofficial. © 2026 Vestora.</span>
+      <span>Made in India 🇮🇳</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/vestora.js" defer></script>
+</body>
+</html>

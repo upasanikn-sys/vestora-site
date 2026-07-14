@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Features — A complete suite of powerful tools | Vestora</title>
+<meta name="description" content="Powerful features. Deep insights. Complete control. Financial Health, Goals, Cash Flow, Investments, Debt, Tax, Protection, Documents, AI Copilot, Reports, Household and Import — all beautifully connected, all on your device.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2316264a'/%3E%3Cpath d='M15 4 L28 28 L28 4 Z' fill='%23c9a44e'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vestora.css">
+<style>
+.chiprow{display:flex; gap:20px; flex-wrap:wrap}
+.chiprow .c{display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--muted2); font-weight:500}
+.chiprow .c svg{color:var(--gold)}
+.modgrid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+.modcard{background:var(--panel); border:1px solid var(--border2); border-radius:16px; padding:16px;
+  transition:transform .2s var(--ease), border-color .2s, box-shadow .2s; cursor:pointer}
+.modcard:hover{transform:translateY(-4px); border-color:var(--border); box-shadow:0 22px 44px rgba(0,0,0,.4)}
+.modprev{background:rgba(255,255,255,.02); border:1px solid var(--border2); border-radius:11px; padding:12px; height:150px; overflow:hidden; margin-bottom:14px; position:relative}
+.modprev .pt{font-size:9.5px; color:var(--muted2); display:flex; justify-content:space-between; align-items:center; margin-bottom:6px}
+.modprev .pv{font-size:19px; font-weight:700; letter-spacing:-.01em}
+.modtitle{display:flex; align-items:center; gap:9px; margin-bottom:8px}
+.modtitle .mi{width:30px; height:30px; border-radius:9px; display:grid; place-items:center; flex:none}
+.modtitle h3{font-size:15px; font-weight:600}
+.modcard p{font-size:12px; color:var(--muted); line-height:1.5; margin-bottom:11px; min-height:34px}
+.mchecks{list-style:none; display:flex; flex-direction:column; gap:6px; margin-bottom:12px}
+.mchecks li{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--muted2)}
+.mchecks li svg{color:var(--pos); flex:none}
+.modcard .explore{font-size:12.5px; font-weight:600; color:var(--gold); display:inline-flex; align-items:center; gap:6px}
+.modcard:hover .explore{gap:9px}
+/* preview widgets */
+.ring2{width:56px; height:56px; border-radius:50%; position:relative; display:grid; place-items:center;
+  background:conic-gradient(var(--pos) 0 78%, var(--border) 78% 100%)}
+.ring2::before{content:""; position:absolute; inset:5px; border-radius:50%; background:#0c1424}
+.ring2 b{position:relative; font-size:15px; font-weight:700}
+.prow{display:flex; align-items:center; justify-content:space-between; font-size:10px; color:var(--muted2); padding:3px 0}
+.prow b{color:var(--text); font-weight:600}
+.donut{width:60px; height:60px; border-radius:50%; position:relative;
+  background:conic-gradient(var(--pos) 0 65%, var(--blue) 65% 90%, var(--gold) 90% 97%, var(--purp) 97% 100%)}
+.donut::before{content:""; position:absolute; inset:9px; border-radius:50%; background:#0c1424}
+.mbars{display:flex; align-items:flex-end; gap:3px; height:56px}
+.mbars i{flex:1; border-radius:2px 2px 0 0}
+.plist{display:flex; flex-direction:column; gap:5px}
+.plist .pl{display:flex; align-items:center; gap:6px; font-size:9.5px; color:var(--muted2)}
+.plist .pl .d{width:14px; height:14px; border-radius:4px; background:rgba(201,164,78,.14); color:var(--gold); display:grid; place-items:center; flex:none; font-size:8px}
+/* cta band */
+.fcta{display:grid; grid-template-columns:1.3fr 1fr; gap:30px; align-items:center}
+.fcta-mini{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:8px}
+.fcta-mini .m{text-align:center}
+.fcta-mini .m .mi{width:42px; height:42px; border-radius:12px; margin:0 auto 10px; display:grid; place-items:center; border:1px solid var(--border); background:rgba(255,255,255,.02); color:var(--gold)}
+.fcta-mini .m b{font-size:12.5px; display:block; margin-bottom:3px} .fcta-mini .m span{font-size:10.5px; color:var(--muted); line-height:1.4}
+.osrow{display:flex; align-items:center; gap:12px; color:var(--muted); margin-top:14px}
+@media (max-width:960px){
+  .modgrid{grid-template-columns:repeat(2,1fr)} .fcta{grid-template-columns:1fr}
+  .fcta-mini{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){ .modgrid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><span class="mark"></span><span><span class="bt">Vestora</span><span class="bs">Build Wealth. With Clarity.</span></span></a>
+    <nav class="navlinks">
+      <a href="why-vestora.html">Why Vestora</a><a href="features.html" class="active">Features</a>
+      <a href="ai-copilot.html">AI Copilot</a><a href="security.html">Security</a><a href="pricing.html">Pricing</a>
+      <span class="dropdown"><a href="download.html">Resources <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown-menu"><a href="download.html">Download</a><a href="features.html">Features</a><a href="roadmap.html">Roadmap</a><a href="https://github.com/upasanikn-sys/vestora">GitHub</a><a href="mailto:hello@vestora.app">Contact</a></div>
+      </span>
+      <a href="roadmap.html">Roadmap</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="login" href="download.html">Login</a>
+      <a class="btn btn-gold" href="download.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Download Vestora</a>
+      <button class="menu-btn" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu">
+  <a href="why-vestora.html">Why Vestora</a><a href="features.html">Features</a><a href="ai-copilot.html">AI Copilot</a>
+  <a href="security.html">Security</a><a href="pricing.html">Pricing</a><a href="roadmap.html">Roadmap</a><a href="download.html">Download</a>
+  <a class="btn btn-gold" href="download.html">Download Vestora</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:16px">
+  <div class="glow" style="width:500px;height:500px;background:rgba(201,164,78,.08);top:-120px;right:-90px"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">All-in-one financial operating system</span>
+      <h1 class="h1 serif">Everything you need.<br><span class="l2">Nothing you don't.</span></h1>
+      <p class="lead">Powerful features. Deep insights. Complete control. All your finances, beautifully connected.</p>
+      <div class="hero-btns">
+        <a class="btn btn-gold" href="download.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Download Vestora</a>
+        <a class="btn btn-ghost" href="#tour"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z" fill="currentColor" stroke="none"/></svg>Watch product tour</a>
+      </div>
+      <div class="chiprow">
+        <div class="c"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>100% Local</div>
+        <div class="c"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 18a5 5 0 01-1-9.9A6 6 0 0118 9a4 4 0 010 9H7z"/><path d="M6 6l12 12"/></svg>No Cloud</div>
+        <div class="c"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5 5l14 14"/></svg>No Ads</div>
+        <div class="c"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.5a7 7 0 0114 0M8.5 15.5a3.5 3.5 0 017 0M12 18.5h.01"/></svg>Works Offline</div>
+        <div class="c"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/></svg>AES-256 Encrypted</div>
+      </div>
+    </div>
+
+    <!-- dashboard mock (reused) -->
+    <div class="mock">
+      <div class="mock-top">
+        <span class="bt"><span class="mark" style="width:20px;height:20px"></span> Vestora</span>
+        <div class="mock-dots"><i>◔</i><i>◫</i><i>◇</i><i style="width:26px;background:linear-gradient(135deg,var(--hero),var(--herob))"></i></div>
+      </div>
+      <div class="mock-body">
+        <div class="mside">
+          <a class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>Overview</a>
+          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>Goals</a>
+          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V4M4 20h16M8 16l4-6 3 3 5-7"/></svg>Investments</a>
+          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4v16M4 17l3 3 3-3M17 20V4M14 7l3-3 3 3"/></svg>Cash Flow</a>
+          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9z"/></svg>AI Copilot</a>
+          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0111 0M16 5a3 3 0 010 6"/></svg>Household</a>
+          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h8l4 4v16H6z"/></svg>Reports</a>
+          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Documents</a>
+          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a7 7 0 000-2l2-1.6-2-3.4-2.3 1a7 7 0 00-1.7-1L15 3h-4l-.4 2.5a7 7 0 00-1.7 1l-2.3-1-2 3.4L4.6 11a7 7 0 000 2l-2 1.6 2 3.4 2.3-1a7 7 0 001.7 1L11 21h4l.4-2.5a7 7 0 001.7-1l2.3 1 2-3.4z"/></svg>Settings</a>
+        </div>
+        <div class="mmain">
+          <div class="mnet">
+            <div><div class="lbl">TOTAL NET WORTH</div><div class="big">₹50,869 <span class="up">▲ 1.74%</span></div><div class="sub">vs last month (₹49,999)</div></div>
+            <div class="mring"><div class="mrc"><b>78</b></div><div class="hl"><b>Financial Health</b>Good</div></div>
+          </div>
+          <div class="mcards">
+            <div class="mcard"><div class="ct">Cash flow this month</div><div class="cv">₹27,680</div><div class="cs">Income ₹83,360 · Expenses ₹57,680</div><div class="spark"><i style="height:40%"></i><i style="height:55%"></i><i style="height:45%"></i><i style="height:70%"></i><i style="height:60%"></i><i style="height:85%"></i><i style="height:75%"></i></div></div>
+            <div class="mcard ai"><div class="ct"><span class="chip">✦</span> AI Copilot</div><div class="aiq">Can I retire at 55?</div><div class="aia">Increase your SIP by ₹4,000 and delay by 1 year if needed.</div><span class="aibtn">View recommendation →</span></div>
+            <div class="mcard"><div class="ct">Goals</div>
+              <div class="mgoal"><span class="gi" style="background:rgba(52,211,153,.14);color:var(--pos)">◎</span><div class="gn"><b>Retirement</b><span class="gt">On track</span><div class="mbar"><i style="width:72%;background:var(--pos)"></i></div></div><span class="gp">72%</span></div>
+              <div class="mgoal"><span class="gi" style="background:rgba(91,141,239,.14);color:var(--blue)">▣</span><div class="gn"><b>Emergency Fund</b><span class="gt">On track</span><div class="mbar"><i style="width:56%;background:var(--blue)"></i></div></div><span class="gp">56%</span></div>
+              <div class="mgoal"><span class="gi" style="background:rgba(201,164,78,.14);color:var(--gold)">⌂</span><div class="gn"><b>House Down Payment</b><span class="gt">On track</span><div class="mbar"><i style="width:38%;background:var(--gold)"></i></div></div><span class="gp">38%</span></div>
+            </div>
+            <div class="mcard"><div class="ct">Investments</div><div class="cv">₹38,47,120</div><div class="cs pos">▲ 12.61% vs last month</div><div class="spark p"><i style="height:30%"></i><i style="height:45%"></i><i style="height:38%"></i><i style="height:60%"></i><i style="height:52%"></i><i style="height:78%"></i><i style="height:88%"></i></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">Explore every module</div>
+    <h2 class="sec-title serif">A complete suite of powerful tools</h2>
+    <div class="sec-sub">Click on any module to explore how Vestora helps you take control of your financial life.</div>
+    <div class="modgrid">
+
+      <!-- Financial Health -->
+      <a class="modcard" href="download.html">
+        <div class="modprev">
+          <div class="pt"><span>Financial Health Score</span></div>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:8px">
+            <div class="ring2"><b>78</b></div>
+            <div style="flex:1">
+              <div class="prow"><span>Savings Rate</span><b class="pos">32%</b></div>
+              <div class="prow"><span>Emergency Fund</span><b>6.2 mo</b></div>
+              <div class="prow"><span>Debt Level</span><b>18%</b></div>
+              <div class="prow"><span>Investment Mix</span><b class="pos">Good</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="modtitle"><span class="mi ic-g"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.8 5.6a5 5 0 00-7 0l-.8.8-.8-.8a5 5 0 10-7 7l7.8 7.8 7.8-7.8a5 5 0 000-7z"/></svg></span><h3>Financial Health</h3></div>
+        <p>Get your Financial Health Score and know exactly where you stand.</p>
+        <ul class="mchecks"><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Health Score (0–100)</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>7 key health factors</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Actionable insights</li></ul>
+        <span class="explore">View full analysis →</span>
+      </a>
+
+      <!-- Goals & Retirement -->
+      <a class="modcard" href="download.html">
+        <div class="modprev">
+          <div class="pt"><span>Retirement at 55</span><span class="pos">On track</span></div>
+          <div class="pos" style="font-size:18px;font-weight:700;margin:2px 0">93%</div>
+          <div class="mbars" style="margin:6px 0"><i style="height:24%;background:linear-gradient(180deg,var(--purp),rgba(169,154,240,.3))"></i><i style="height:32%;background:linear-gradient(180deg,var(--purp),rgba(169,154,240,.3))"></i><i style="height:42%;background:linear-gradient(180deg,var(--teal),rgba(45,212,191,.3))"></i><i style="height:52%;background:linear-gradient(180deg,var(--teal),rgba(45,212,191,.3))"></i><i style="height:64%;background:linear-gradient(180deg,var(--pos),rgba(52,211,153,.3))"></i><i style="height:76%;background:linear-gradient(180deg,var(--pos),rgba(52,211,153,.3))"></i><i style="height:88%;background:linear-gradient(180deg,var(--pos),rgba(52,211,153,.3))"></i><i style="height:100%;background:linear-gradient(180deg,var(--pos),rgba(52,211,153,.3))"></i></div>
+          <div class="prow"><span>Monthly SIP</span><b>₹27,000</b></div>
+          <div class="prow"><span>Target corpus</span><b>₹8.06 Cr</b></div>
+        </div>
+        <div class="modtitle"><span class="mi ic-r"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></span><h3>Goals &amp; Retirement</h3></div>
+        <p>Plan every goal. Visualize your future. Retire with confidence.</p>
+        <ul class="mchecks"><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Retirement planner</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Goal tracking</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Milestone timeline</li></ul>
+        <span class="explore">Explore goals →</span>
+      </a>
+
+      <!-- Cash Flow -->
+      <a class="modcard" href="download.html">
+        <div class="modprev">
+          <div class="pt"><span>Cash flow this month</span></div>
+          <div class="pv">₹27,680</div>
+          <div style="display:flex;gap:10px;font-size:9px;color:var(--muted);margin:4px 0"><span>Income <b class="pos" style="color:var(--pos)">₹83,360</b></span><span>Expenses <b class="neg" style="color:var(--neg)">₹57,680</b></span></div>
+          <div class="linechart" style="height:52px;border:none"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><polyline points="0,30 15,26 30,32 45,20 60,24 75,12 100,8" fill="none" stroke="#34d399" stroke-width="2"/><polyline points="0,34 15,30 30,28 45,33 60,26 75,30 100,22" fill="none" stroke="#f87171" stroke-width="2"/></svg></div>
+        </div>
+        <div class="modtitle"><span class="mi ic-g"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 4v16M4 17l3 3 3-3M17 20V4M14 7l3-3 3 3"/></svg></span><h3>Cash Flow</h3></div>
+        <p>Understand your money flow and take control.</p>
+        <ul class="mchecks"><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Income vs Expenses</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Budgeting (50/30/20)</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Cash runway</li></ul>
+        <span class="explore">Explore cash flow →</span>
+      </a>
+
+      <!-- Investments -->
+      <a class="modcard" href="download.html">
+        <div class="modprev">
+          <div class="pt"><span>Asset Allocation</span></div>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:8px">
+            <div class="donut"></div>
+            <div class="plist" style="flex:1">
+              <div class="pl"><span class="d" style="background:rgba(52,211,153,.2);color:var(--pos)">●</span>Equity <b style="margin-left:auto;color:var(--text)">65%</b></div>
+              <div class="pl"><span class="d" style="background:rgba(91,141,239,.2);color:var(--blue)">●</span>Debt <b style="margin-left:auto;color:var(--text)">25%</b></div>
+              <div class="pl"><span class="d" style="background:rgba(201,164,78,.2);color:var(--gold)">●</span>Gold <b style="margin-left:auto;color:var(--text)">7%</b></div>
+              <div class="pl"><span class="d" style="background:rgba(169,154,240,.2);color:var(--purp)">●</span>Cash <b style="margin-left:auto;color:var(--text)">3%</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="modtitle"><span class="mi ic-g"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V4M4 20h16M8 15l4-5 3 3 5-7"/></svg></span><h3>Investments</h3></div>
+        <p>Track, analyze and grow your investments smarter.</p>
+        <ul class="mchecks"><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Portfolio allocation</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Holdings analysis</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Rebalancing alerts</li></ul>
+        <span class="explore">Explore investments →</span>
+      </a>
+
+      <!-- Debt Manager -->
+      <a class="modcard" href="download.html">
+        <div class="modprev">
+          <div class="pt"><span>Total Debt</span><span class="pos">▼ 3.2%</span></div>
+          <div class="pv" style="color:var(--neg)">₹8,75,000</div>
+          <div class="plist" style="margin-top:8px">
+            <div class="prow"><span>🏠 Home Loan</span><b>₹6,20,000</b></div>
+            <div class="prow"><span>🚗 Car Loan</span><b>₹1,45,000</b></div>
+            <div class="prow"><span>💳 Personal Loan</span><b>₹75,000</b></div>
+            <div class="prow"><span>💳 Credit Card</span><b>₹35,000</b></div>
+          </div>
+        </div>
+        <div class="modtitle"><span class="mi ic-r"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h12"/></svg></span><h3>Debt Manager</h3></div>
+        <p>Take control of debt and become debt-free faster.</p>
+        <ul class="mchecks"><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>All loans in one place</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Snowball &amp; avalanche</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Payoff simulator</li></ul>
+        <span class="explore">Explore debt →</span>
+      </a>
+
+      <!-- Tax Planner -->
+      <a class="modcard" href="download.html">
+        <div class="modprev">
+          <div class="pt"><span>Tax Savings</span></div>
+          <div class="pv pos">₹1,48,762</div>
+          <div style="font-size:9px;color:var(--muted)">Potential savings</div>
+          <div class="plist" style="margin-top:8px">
+            <div class="prow"><span>Old Regime</span><b>₹2,18,340</b></div>
+            <div class="prow"><span>New Regime</span><b>₹1,35,578</b></div>
+            <div class="prow"><span>Save with Old</span><b class="pos">₹82,762</b></div>
+          </div>
+        </div>
+        <div class="modtitle"><span class="mi ic-o"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2h8l4 4v16H6z"/><path d="M9 12h6M9 16h4"/></svg></span><h3>Tax Planner</h3></div>
+        <p>Optimize taxes. Save more. Keep more of what you earn.</p>
+        <ul class="mchecks"><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Old vs new regime</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Tax saving suggestions</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>PDF tax report</li></ul>
+        <span class="explore">Explore tax planner →</span>
+      </a>
+
+      <!-- Protection -->
+      <a class="modcard" href="download.html">
+        <div class="modprev">
+          <div class="pt"><span>Insurance Summary</span><span class="pos">Adequate</span></div>
+          <div class="pv">₹2.25 Cr</div>
+          <div style="font-size:9px;color:var(--muted)">Total Coverage</div>
+          <div class="plist" style="margin-top:8px">
+            <div class="prow"><span>Life Insurance</span><b>₹1.50 Cr</b></div>
+            <div class="prow"><span>Health Insurance</span><b>₹50 L</b></div>
+            <div class="prow"><span>Other Insurance</span><b>₹25 L</b></div>
+          </div>
+        </div>
+        <div class="modtitle"><span class="mi ic-t"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Protection</h3></div>
+        <p>Protect what matters most. Your family. Your future.</p>
+        <ul class="mchecks"><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Insurance tracker</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Emergency fund</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Estate planning</li></ul>
+        <span class="explore">Explore protection →</span>
+      </a>
+
+      <!-- Documents -->
+      <a class="modcard" href="download.html">
+        <div class="modprev">
+          <div class="pt"><span>Document Vault</span></div>
+          <div class="pv" style="font-size:16px">23 Documents</div>
+          <div class="plist" style="margin-top:8px">
+            <div class="prow"><span>📄 PAN Card</span><b>🔒</b></div>
+            <div class="prow"><span>📄 Aadhaar Card</span><b>🔒</b></div>
+            <div class="prow"><span>📄 Property Document</span><b>🔒</b></div>
+            <div class="prow"><span>📄 Insurance Policy</span><b>🔒</b></div>
+          </div>
+        </div>
+        <div class="modtitle"><span class="mi ic-o"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><h3>Documents</h3></div>
+        <p>All your important documents. Safe. Encrypted. Accessible.</p>
+        <ul class="mchecks"><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Encrypted vault</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Organized folders</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>On-device storage</li></ul>
+        <span class="explore">Explore documents →</span>
+      </a>
+
+      <!-- AI Copilot -->
+      <a class="modcard" href="ai-copilot.html">
+        <div class="modprev">
+          <div class="ca-you" style="margin-bottom:8px"><span class="av" style="width:20px;height:20px;font-size:9px">K</span><span class="b" style="font-size:10px;padding:5px 9px">Can I buy a house?</span></div>
+          <div style="background:rgba(169,154,240,.08);border:1px solid rgba(169,154,240,.2);border-radius:8px;padding:8px;font-size:9.5px;color:var(--muted2);line-height:1.4">Yes, you can afford a ₹70L home. Here's my analysis.</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:7px;font-size:9px;color:var(--muted)"><span>Affordability</span><b class="pos" style="color:var(--pos)">82%</b></div>
+        </div>
+        <div class="modtitle"><span class="mi ic-p"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9z"/></svg></span><h3>AI Copilot</h3></div>
+        <p>Your AI financial partner. Ask anything. Get clarity.</p>
+        <ul class="mchecks"><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Natural conversations</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Personalized answers</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Data-driven insights</li></ul>
+        <span class="explore">Try AI Copilot →</span>
+      </a>
+
+      <!-- Reports -->
+      <a class="modcard" href="download.html">
+        <div class="modprev">
+          <div class="pt"><span>Wealth Report</span><span>2026</span></div>
+          <div style="font-size:9px;color:var(--muted)">Comprehensive overview</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:6px">Net Worth</div>
+          <div class="pv" style="font-size:15px">₹50,86,900</div>
+          <div class="mbars" style="margin-top:6px"><i style="height:30%;background:var(--pos)"></i><i style="height:40%;background:var(--pos)"></i><i style="height:36%;background:var(--pos)"></i><i style="height:52%;background:var(--pos)"></i><i style="height:48%;background:var(--pos)"></i><i style="height:64%;background:var(--pos)"></i><i style="height:72%;background:var(--pos)"></i><i style="height:88%;background:var(--pos)"></i></div>
+        </div>
+        <div class="modtitle"><span class="mi ic-t"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a9 9 0 109 9h-9z"/><path d="M14 3.2A9 9 0 0120.8 10H14z"/></svg></span><h3>Reports</h3></div>
+        <p>Beautiful reports that help you make better decisions.</p>
+        <ul class="mchecks"><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Wealth &amp; tax reports</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Retirement report</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Print to PDF</li></ul>
+        <span class="explore">View all reports →</span>
+      </a>
+
+      <!-- Household -->
+      <a class="modcard" href="download.html">
+        <div class="modprev">
+          <div class="pt"><span>Household</span></div>
+          <div style="font-size:10px;color:var(--muted2);margin-bottom:8px">Manage your entire household finances together.</div>
+          <div class="plist">
+            <div class="prow"><span>👩 Shared goals</span><b>2</b></div>
+            <div class="prow"><span>👨 Shared expenses</span><b>8</b></div>
+            <div class="prow"><span>👪 Family overview</span><b class="pos">Aligned</b></div>
+          </div>
+        </div>
+        <div class="modtitle"><span class="mi ic-t"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0111 0M16 5a3 3 0 010 6M20.5 20a5.5 5.5 0 00-4.5-5.4"/></svg></span><h3>Household</h3></div>
+        <p>Manage your entire household finances together.</p>
+        <ul class="mchecks"><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Shared goals</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Shared expenses</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Family overview</li></ul>
+        <span class="explore">View household →</span>
+      </a>
+
+      <!-- Import & Sync -->
+      <a class="modcard" href="download.html">
+        <div class="modprev">
+          <div class="pt"><span>Import Statement</span></div>
+          <div style="background:rgba(255,255,255,.02);border:1px dashed var(--border);border-radius:8px;padding:10px;margin-top:8px;text-align:center">
+            <div style="font-size:10px;color:var(--muted2)">HDFC Bank</div>
+            <div style="font-size:9px;color:var(--muted)">Jan – Mar 2026</div>
+            <div class="pos" style="font-size:12px;font-weight:700;margin-top:6px">3,246 Transactions</div>
+            <div style="font-size:8px;color:var(--pos)">Imported successfully</div>
+          </div>
+        </div>
+        <div class="modtitle"><span class="mi ic-b"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg></span><h3>Import &amp; Sync</h3></div>
+        <p>Import statements. Auto-categorize. Save hours every month.</p>
+        <ul class="mchecks"><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Bank statements</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>UPI transactions</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Auto-categorization</li></ul>
+        <span class="explore">Explore import →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="sec">
+  <div class="wrap">
+    <div class="band">
+      <div class="fcta">
+        <div>
+          <h2 class="serif" style="font-size:30px;letter-spacing:-.02em;line-height:1.15;margin-bottom:24px">One system.<br>Every decision.<br><span class="gold">Total clarity.</span></h2>
+          <div class="fcta-mini">
+            <div class="m"><span class="mi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/></svg></span><b>All-in-One</b><span>Everything in one place</span></div>
+            <div class="m"><span class="mi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span><b>Private by Design</b><span>Your data. Your control.</span></div>
+            <div class="m"><span class="mi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9z"/></svg></span><b>AI-Powered</b><span>Insights that move you forward.</span></div>
+            <div class="m"><span class="mi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0111 0M16 5a3 3 0 010 6"/></svg></span><b>Built for India</b><span>Tax, investments &amp; regulations covered.</span></div>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <h3 class="serif gold" style="font-size:22px;margin-bottom:20px">Ready to take control of your financial life?</h3>
+          <a class="btn btn-gold wide" href="download.html" style="max-width:320px;margin:0 auto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Download Vestora</a>
+          <div class="osrow" style="justify-content:center">
+            <span style="font-size:11px">Also available on</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4.5l8-1.1v8.1H3zM3 12.5h8v8.1l-8-1.1zM12 3.3L21 2v9.5h-9zM12 12.5h9V22l-9-1.3z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.5-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.1z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM TRUST STRIP -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin:10px 0 16px">Trusted by people who value privacy and clarity.</p>
+    <div class="foot-trust">
+      <div class="fti"><span class="fic" style="color:var(--pos)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span><div><b>Runs 100% Locally</b><span>Your data never leaves your device.</span></div></div>
+      <div class="fti"><span class="fic" style="color:var(--gold)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></span><div><b>Bank-Grade Security</b><span>AES-256 encryption.</span></div></div>
+      <div class="fti"><span class="fic" style="color:var(--blue)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 18a5 5 0 01-1-9.9A6 6 0 0118 9a4 4 0 010 9H7z"/><path d="M6 6l12 12"/></svg></span><div><b>No Cloud. No Tracking.</b><span>Ever.</span></div></div>
+      <div class="fti"><span class="fic" style="color:var(--teal)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12.5a7 7 0 0114 0M8.5 15.5a3.5 3.5 0 017 0M12 18.5h.01"/></svg></span><div><b>Works Offline</b><span>Always.</span></div></div>
+      <div class="fti"><span class="fic" style="color:var(--gold)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9z"/></svg></span><div><b>Made in India</b><span>For the world.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="margin-top:0">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><span class="mark"></span><span><span class="bt">Vestora</span><span class="bs">Build Wealth. With Clarity.</span></span></a>
+        <p>A privacy-first financial operating system. Understand, grow and protect your wealth with AI — running entirely on your own device.</p>
+        <div class="trust-row"><div class="ti"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>No cloud · No accounts · No tracking</div></div>
+      </div>
+      <div class="foot-col"><h5>Product</h5><a href="why-vestora.html">Why Vestora</a><a href="features.html">Features</a><a href="ai-copilot.html">AI Copilot</a><a href="security.html">Security</a><a href="pricing.html">Pricing</a><a href="roadmap.html">Roadmap</a></div>
+      <div class="foot-col"><h5>Download</h5><a href="download.html" class="js-dl" data-os="Windows">Windows app</a><a href="#notify" data-notify="macOS">macOS</a><a href="#notify" data-notify="mobile">Android &amp; iOS</a><a href="#notify" data-notify="Linux">Linux</a></div>
+      <div class="foot-col"><h5>Company</h5><a href="why-vestora.html">About</a><a href="mailto:hello@vestora.app">Contact</a><a href="https://github.com/upasanikn-sys/vestora">GitHub</a><a href="security.html">Privacy</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span class="discl">Vestora is a personal tracking &amp; planning tool — not SEBI-registered investment advice, and it never moves real money. Market data is delayed and unofficial. © 2026 Vestora.</span>
+      <span>Made in India 🇮🇳</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/vestora.js" defer></script>
+</body>
+</html>
