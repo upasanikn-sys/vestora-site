@@ -157,7 +157,8 @@ section{position:relative}
 
 /* ---------- dashboard mock (shared by home + features) ---------- */
 .mock{background:linear-gradient(160deg,#0d1730,#0b1120); border:1px solid var(--border);
-  border-radius:18px; padding:14px; box-shadow:0 40px 90px rgba(0,0,0,.55); position:relative}
+  border-radius:18px; padding:14px; box-shadow:0 40px 90px rgba(0,0,0,.55); position:relative;
+  pointer-events:none; max-width:100%}
 .mock-top{display:flex; align-items:center; gap:8px; padding:2px 4px 12px}
 .mock-top .bt{font-weight:700; font-size:14px; display:flex; align-items:center; gap:7px}
 .mock-dots{margin-left:auto; display:flex; gap:6px}
@@ -262,4 +263,9 @@ footer{padding:40px 0 36px; border-top:1px solid var(--border2); margin-top:26px
   .h1{font-size:34px} .sec-title{font-size:27px} .pillars{grid-template-columns:1fr 1fr}
   .fgrid{grid-template-columns:1fr} .trust-strip{gap:16px} .foot-grid{grid-template-columns:1fr}
   .hero{padding:40px 0 30px} .band{padding:32px 18px}
+  /* dashboard mock: shrink so it never overflows the phone screen */
+  .mock-body{grid-template-columns:86px minmax(0,1fr); gap:8px}
+  .mmain{min-width:0} .mside a{font-size:9px; padding:5px 6px}
+  .mnet{gap:8px} .mnet .big{font-size:19px} .mring{transform:scale(.85); transform-origin:top right}
+  .mcards{grid-template-columns:1fr; gap:8px}
 }
