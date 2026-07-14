@@ -45,9 +45,8 @@ header{position:sticky; top:0; z-index:80; background:rgba(7,13,24,.72);
 .nav{display:flex; align-items:center; gap:14px; height:70px}
 .brand{display:flex; align-items:center; gap:11px; margin-right:8px}
 .brand > span:last-child{display:flex; flex-direction:column; justify-content:center}
-.mark{width:34px; height:34px; border-radius:9px; flex:none; position:relative; overflow:hidden;
-  background:linear-gradient(120deg,#16264a 0 46%,var(--gold) 52% 100%);
-  box-shadow:0 3px 14px rgba(201,164,78,.34)}
+.mark{width:34px; height:34px; flex:none; background:no-repeat center/contain
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M8 10L20 10Q23 20 24 30Q24.3 37.5 22.4 42.5Z' fill='%2316294d'/%3E%3Cpath d='M40 10L28 10Q25 20 24 30Q23.7 37.5 25.6 42.5Z' fill='%23c9a44e'/%3E%3C/svg%3E")}
 .brand .bt{font-weight:700; font-size:18px; letter-spacing:-.01em; line-height:1.05}
 .brand .bs{font-size:10.5px; color:var(--muted); letter-spacing:.02em; margin-top:3px; line-height:1}
 .navlinks{display:flex; align-items:center; gap:1px; margin:0 auto; flex-wrap:nowrap}
