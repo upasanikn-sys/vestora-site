@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/vestora.css">
 <style>
-.why-hero{display:grid; grid-template-columns:.95fr 1.15fr; gap:40px; align-items:center; padding:56px 0 30px}
+.why-hero{display:grid; grid-template-columns:.95fr 1.15fr; gap:40px; align-items:start; padding:44px 0 20px}
 .why-hero .h1{font-size:46px}
 .prob-panel{background:linear-gradient(160deg,#0d1730,#0b1120); border:1px solid var(--border);
   border-radius:20px; padding:26px 20px; box-shadow:0 30px 70px rgba(0,0,0,.5)}
@@ -222,10 +222,13 @@
 <!-- AI THAT UNDERSTANDS YOU -->
 <section class="sec">
   <div class="wrap">
-    <div class="sec-label" style="text-align:left">AI that understands you</div>
-    <h2 class="serif" style="font-size:32px;letter-spacing:-.02em;margin-bottom:28px">Not just answers. Real financial guidance.</h2>
-    <p class="lead" style="max-width:560px;margin-bottom:30px">Vestora AI looks at your entire financial picture — income, expenses, investments, goals, taxes and risk profile — before giving you a personalized plan.</p>
-    <div class="flow3">
+    <div style="display:grid;grid-template-columns:.82fr 2.18fr;gap:34px;align-items:start">
+      <div>
+        <div class="sec-label" style="text-align:left">AI that understands you</div>
+        <h2 class="serif" style="font-size:29px;letter-spacing:-.02em;margin-bottom:14px">Not just answers. Real financial guidance.</h2>
+        <p style="font-size:14px;color:var(--muted2);line-height:1.6">Vestora AI looks at your entire financial picture — income, expenses, investments, goals, taxes and risk profile — before giving you a personalized plan.</p>
+      </div>
+      <div class="flow3">
       <div class="flowcol">
         <div class="step"><span class="stepno">1</span> You ask</div>
         <div class="msg you" style="display:flex;gap:9px"><span class="av" style="width:26px;height:26px;border-radius:8px;background:var(--hero);color:var(--goldsoft);display:grid;place-items:center;font-size:11px;font-weight:700;flex:none">K</span><div><div style="font-size:10px;color:var(--muted);margin-bottom:4px">You ask</div><span style="background:rgba(169,154,240,.16);color:var(--purp);font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:10px;display:inline-block">Can I retire at 52?</span></div></div>
@@ -253,6 +256,7 @@
         <div class="spark" style="height:44px"><i style="height:24%"></i><i style="height:30%"></i><i style="height:38%"></i><i style="height:46%"></i><i style="height:56%"></i><i style="height:64%"></i><i style="height:74%"></i><i style="height:84%"></i><i style="height:92%"></i><i style="height:100%"></i></div>
         <a class="btn btn-ghost" href="ai-copilot.html" style="margin-top:14px;font-size:12.5px;padding:9px 14px">View full recommendation →</a>
       </div>
+    </div>
     </div>
   </div>
 </section>
