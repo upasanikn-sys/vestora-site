@@ -16,12 +16,9 @@ var DOWNLOAD_URL = "";   // e.g. "https://vestora.gumroad.com/l/vestora"
     el.addEventListener("click", function (e) {
       if (DOWNLOAD_URL) { window.location.href = DOWNLOAD_URL; return; }
       e.preventDefault();
-      alert(
-        "Vestora for Windows is in early access.\n\n" +
-        "The free tier is fully usable forever — no cloud, no login for your data, " +
-        "everything stays on your device. Want your copy? Email hello@vestora.app " +
-        "and we'll send it over."
-      );
+      window.location.href = "mailto:hello@vestora.app?subject=" +
+        encodeURIComponent("Vestora for Windows — early access request") +
+        "&body=" + encodeURIComponent("Hi — I'd like early access to Vestora for Windows.");
     });
   });
 
@@ -30,10 +27,8 @@ var DOWNLOAD_URL = "";   // e.g. "https://vestora.gumroad.com/l/vestora"
     el.addEventListener("click", function (e) {
       e.preventDefault();
       var p = el.getAttribute("data-notify");
-      alert(
-        p + " is on the way. Vestora for Windows lands first — the free tier is " +
-        "fully usable forever. We'll bring " + p + " next."
-      );
+      window.location.href = "mailto:hello@vestora.app?subject=" +
+        encodeURIComponent("Notify me — Vestora for " + p);
     });
   });
 
@@ -104,10 +99,9 @@ var DOWNLOAD_URL = "";   // e.g. "https://vestora.gumroad.com/l/vestora"
       e.preventDefault();
       var input = f.querySelector("input");
       var val = input ? input.value.trim() : "";
-      alert(
-        (val ? val + " — you're on the list. " : "You're on the list. ") +
-        "We'll email you when the next Vestora build ships. No spam, ever."
-      );
+      window.location.href = "mailto:hello@vestora.app?subject=" +
+        encodeURIComponent("Keep me posted on Vestora") +
+        "&body=" + encodeURIComponent("Please add me to the update list." + (val ? " My email: " + val : ""));
       if (input) input.value = "";
     });
   });
