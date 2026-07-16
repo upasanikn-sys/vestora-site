@@ -17,10 +17,10 @@ var DOWNLOAD_URL = "";   // e.g. "https://vestora.gumroad.com/l/vestora"
       if (DOWNLOAD_URL) { window.location.href = DOWNLOAD_URL; return; }
       e.preventDefault();
       alert(
-        "Vestora for Windows is launching this week.\n\n" +
-        "The free tier is fully usable forever — no cloud, no account, your data " +
-        "stays on your device. Want an early copy? Email hello@vestora.app and " +
-        "we'll send it over."
+        "Vestora for Windows is in early access.\n\n" +
+        "The free tier is fully usable forever — no cloud, no login for your data, " +
+        "everything stays on your device. Want your copy? Email hello@vestora.app " +
+        "and we'll send it over."
       );
     });
   });
