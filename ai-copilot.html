@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/vestora.css?v=5">
+<link rel="stylesheet" href="assets/vestora.css?v=6">
 <style>
 .ai-hero{display:grid; grid-template-columns:.85fr 1.15fr; gap:38px; align-items:start; padding:40px 0 18px}
 .ai-hero .h1{font-size:46px}
@@ -125,7 +125,7 @@
       <a href="why-vestora.html">Why Vestora</a><a href="features.html">Features</a>
       <a href="ai-copilot.html" class="active">AI Copilot</a><a href="security.html">Security</a><a href="pricing.html">Pricing</a>
       <span class="dropdown"><a href="download.html">Resources <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
-        <div class="dropdown-menu"><a href="download.html">Download</a><a href="features.html">Features</a><a href="roadmap.html">Roadmap</a><a href="https://github.com/upasanikn-sys/vestora">GitHub</a><a href="mailto:hello@vestora.app">Contact</a></div>
+        <div class="dropdown-menu"><a href="download.html">Download</a><a href="features.html">Features</a><a href="roadmap.html">Roadmap</a><a href="mailto:hello@vestora.app">Contact</a></div>
       </span>
       <a href="roadmap.html">Roadmap</a>
     </nav>
@@ -162,59 +162,14 @@
       <div class="local-note"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>100% private. Runs locally on your device.</div>
     </div>
 
-    <!-- chat app mock -->
-    <div class="chatapp">
-      <div class="ca-head">
-        <span class="ci"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9z"/></svg></span>
-        <b>AI Copilot</b>
-        <span class="new"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>New chat</span>
+    <!-- real Vestora AI screenshot -->
+    <div>
+      <div class="phoneframe" style="width:min(330px,86%)">
+        <img src="assets/shot-app-ai.png?v=1" alt="The real Vestora AI screen — daily brief with health ring and AI recommendations, all computed on-device" width="800" height="1880">
       </div>
-      <div class="ca-body">
-        <div class="ca-list">
-          <div class="lbl">Today</div>
-          <a class="on">Can I retire at 55?</a>
-          <a>Is buying a house a good decision now?</a>
-          <a>How much should I invest every month?</a>
-          <a>Am I over-insuring myself?</a>
-          <a>How can I reduce taxes legally?</a>
-          <a>What is my financial health?</a>
-          <a>Should I pay off debt or invest?</a>
-          <div class="viewall">View all conversations</div>
-        </div>
-        <div class="ca-main">
-          <div class="ca-you"><span class="av">K</span><div><div style="font-size:10px;color:var(--muted);margin-bottom:4px">You</div><span class="b">Can I retire at 55?</span></div></div>
-          <div class="ca-bot"><span class="av"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9z"/></svg></span>
-            <div style="flex:1">
-              <div class="nm">Vestora Copilot</div>
-              <div class="txt"><b>Yes, you can retire at 55</b> with a high probability of success. Here's what I analyzed:</div>
-              <div class="statc3">
-                <div class="statc"><div class="l">Retirement Corpus</div><div class="v">₹8.06 Cr</div><div class="s">(Projected)</div></div>
-                <div class="statc"><div class="l">Required Corpus</div><div class="v">₹6.21 Cr</div><div class="s">(at age 55)</div></div>
-                <div class="statc"><div class="l">Probability of Success</div><div class="v pos">93%</div><div class="s">High Confidence</div></div>
-              </div>
-              <div class="kf">
-                <div>
-                  <div class="ktitle">Key factors considered</div>
-                  <ul>
-                    <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Current investments &amp; returns</li>
-                    <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Inflation &amp; future expenses</li>
-                    <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Your savings rate &amp; cash flow</li>
-                    <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Debts, taxes, insurance &amp; goals</li>
-                  </ul>
-                </div>
-                <div class="chart">
-                  <div class="ct">Projected Corpus Over Time</div>
-                  <div class="linechart">
-                    <svg viewBox="0 0 100 60" preserveAspectRatio="none"><polyline points="0,56 18,50 36,42 54,31 72,20 90,8 100,3" fill="none" stroke="#34d399" stroke-width="2"/></svg>
-                  </div>
-                  <div style="display:flex;justify-content:space-between;font-size:8px;color:var(--muted);margin-top:4px"><span>30</span><span>40</span><span>50</span><span>55</span></div>
-                </div>
-              </div>
-              <div class="ca-input"><input placeholder="Ask anything about your finances…" disabled><button class="send" aria-label="Send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l16-8-6 16-3-6z"/></svg></button></div>
-              <div class="ca-foot"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>Vestora Copilot uses only your data. Nothing leaves your device.</div>
-            </div>
-          </div>
-        </div>
+      <div style="text-align:center;font-size:11.5px;color:var(--muted);margin-top:12px;display:flex;align-items:center;justify-content:center;gap:6px">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+        Real product screenshot · Vestora AI uses only your data. Nothing leaves your device.
       </div>
     </div>
   </div>
@@ -396,7 +351,7 @@
       </div>
       <div class="foot-col"><h5>Product</h5><a href="why-vestora.html">Why Vestora</a><a href="features.html">Features</a><a href="ai-copilot.html">AI Copilot</a><a href="security.html">Security</a><a href="pricing.html">Pricing</a><a href="roadmap.html">Roadmap</a></div>
       <div class="foot-col"><h5>Download</h5><a href="download.html" class="js-dl" data-os="Windows">Windows app</a><a href="#notify" data-notify="macOS">macOS</a><a href="#notify" data-notify="mobile">Android &amp; iOS</a><a href="#notify" data-notify="Linux">Linux</a></div>
-      <div class="foot-col"><h5>Company</h5><a href="why-vestora.html">About</a><a href="mailto:hello@vestora.app">Contact</a><a href="https://github.com/upasanikn-sys/vestora">GitHub</a><a href="security.html">Privacy</a></div>
+      <div class="foot-col"><h5>Company</h5><a href="why-vestora.html">About</a><a href="mailto:hello@vestora.app">Contact</a><a href="security.html">Privacy</a></div>
     </div>
     <div class="foot-bottom">
       <span class="discl">Vestora is a personal tracking &amp; planning tool — not SEBI-registered investment advice, and it never moves real money. Market data is delayed and unofficial. © 2026 Vestora.</span>
@@ -405,6 +360,6 @@
   </div>
 </footer>
 
-<script src="assets/vestora.js?v=5" defer></script>
+<script src="assets/vestora.js?v=6" defer></script>
 </body>
 </html>

@@ -154,6 +154,14 @@ section{position:relative}
 .ts-item .tb{font-size:14px; font-weight:700; line-height:1.15}
 .ts-item .tl{font-size:11px; color:var(--muted)}
 
+/* ---------- real product screenshots ---------- */
+.shotframe{border:1px solid var(--border); border-radius:18px; overflow:hidden;
+  box-shadow:0 40px 90px rgba(0,0,0,.55); background:#0b1120; line-height:0}
+.shotframe img{width:100%; height:auto; display:block}
+.phoneframe{width:min(300px,80%); margin:0 auto; border:1px solid var(--border); border-radius:26px;
+  overflow:hidden; box-shadow:0 30px 70px rgba(0,0,0,.6); background:#0b1120; line-height:0}
+.phoneframe img{width:100%; height:auto; display:block}
+
 /* ---------- dashboard mock (shared by home + features) ---------- */
 .mock{background:linear-gradient(160deg,#0d1730,#0b1120); border:1px solid var(--border);
   border-radius:18px; padding:14px; box-shadow:0 40px 90px rgba(0,0,0,.55); position:relative;

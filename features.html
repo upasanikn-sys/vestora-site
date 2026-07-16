@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/vestora.css?v=5">
+<link rel="stylesheet" href="assets/vestora.css?v=6">
 <style>
 .chiprow{display:flex; gap:20px; flex-wrap:wrap}
 .chiprow .c{display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--muted2); font-weight:500}
@@ -69,7 +69,7 @@
       <a href="why-vestora.html">Why Vestora</a><a href="features.html" class="active">Features</a>
       <a href="ai-copilot.html">AI Copilot</a><a href="security.html">Security</a><a href="pricing.html">Pricing</a>
       <span class="dropdown"><a href="download.html">Resources <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
-        <div class="dropdown-menu"><a href="download.html">Download</a><a href="features.html">Features</a><a href="roadmap.html">Roadmap</a><a href="https://github.com/upasanikn-sys/vestora">GitHub</a><a href="mailto:hello@vestora.app">Contact</a></div>
+        <div class="dropdown-menu"><a href="download.html">Download</a><a href="features.html">Features</a><a href="roadmap.html">Roadmap</a><a href="mailto:hello@vestora.app">Contact</a></div>
       </span>
       <a href="roadmap.html">Roadmap</a>
     </nav>
@@ -106,41 +106,9 @@
       </div>
     </div>
 
-    <!-- dashboard mock (reused) -->
-    <div class="mock">
-      <div class="mock-top">
-        <span class="bt"><span class="mark" style="width:20px;height:20px"></span> Vestora</span>
-        <div class="mock-dots"><i>◔</i><i>◫</i><i>◇</i><i style="width:26px;background:linear-gradient(135deg,var(--hero),var(--herob))"></i></div>
-      </div>
-      <div class="mock-body">
-        <div class="mside">
-          <a class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>Overview</a>
-          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>Goals</a>
-          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V4M4 20h16M8 16l4-6 3 3 5-7"/></svg>Investments</a>
-          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4v16M4 17l3 3 3-3M17 20V4M14 7l3-3 3 3"/></svg>Cash Flow</a>
-          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9z"/></svg>AI Copilot</a>
-          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0111 0M16 5a3 3 0 010 6"/></svg>Household</a>
-          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h8l4 4v16H6z"/></svg>Reports</a>
-          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Documents</a>
-          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a7 7 0 000-2l2-1.6-2-3.4-2.3 1a7 7 0 00-1.7-1L15 3h-4l-.4 2.5a7 7 0 00-1.7 1l-2.3-1-2 3.4L4.6 11a7 7 0 000 2l-2 1.6 2 3.4 2.3-1a7 7 0 001.7 1L11 21h4l.4-2.5a7 7 0 001.7-1l2.3 1 2-3.4z"/></svg>Settings</a>
-        </div>
-        <div class="mmain">
-          <div class="mnet">
-            <div><div class="lbl">TOTAL NET WORTH</div><div class="big">₹50,869 <span class="up">▲ 1.74%</span></div><div class="sub">vs last month (₹49,999)</div></div>
-            <div class="mring"><div class="mrc"><b>78</b></div><div class="hl"><b>Financial Health</b>Good</div></div>
-          </div>
-          <div class="mcards">
-            <div class="mcard"><div class="ct">Cash flow this month</div><div class="cv">₹27,680</div><div class="cs">Income ₹83,360 · Expenses ₹57,680</div><div class="spark"><i style="height:40%"></i><i style="height:55%"></i><i style="height:45%"></i><i style="height:70%"></i><i style="height:60%"></i><i style="height:85%"></i><i style="height:75%"></i></div></div>
-            <div class="mcard ai"><div class="ct"><span class="chip">✦</span> AI Copilot</div><div class="aiq">Can I retire at 55?</div><div class="aia">Increase your SIP by ₹4,000 and delay by 1 year if needed.</div><span class="aibtn">View recommendation →</span></div>
-            <div class="mcard"><div class="ct">Goals</div>
-              <div class="mgoal"><span class="gi" style="background:rgba(52,211,153,.14);color:var(--pos)">◎</span><div class="gn"><b>Retirement</b><span class="gt">On track</span><div class="mbar"><i style="width:72%;background:var(--pos)"></i></div></div><span class="gp">72%</span></div>
-              <div class="mgoal"><span class="gi" style="background:rgba(91,141,239,.14);color:var(--blue)">▣</span><div class="gn"><b>Emergency Fund</b><span class="gt">On track</span><div class="mbar"><i style="width:56%;background:var(--blue)"></i></div></div><span class="gp">56%</span></div>
-              <div class="mgoal"><span class="gi" style="background:rgba(201,164,78,.14);color:var(--gold)">⌂</span><div class="gn"><b>House Down Payment</b><span class="gt">On track</span><div class="mbar"><i style="width:38%;background:var(--gold)"></i></div></div><span class="gp">38%</span></div>
-            </div>
-            <div class="mcard"><div class="ct">Investments</div><div class="cv">₹38,47,120</div><div class="cs pos">▲ 12.61% vs last month</div><div class="spark p"><i style="height:30%"></i><i style="height:45%"></i><i style="height:38%"></i><i style="height:60%"></i><i style="height:52%"></i><i style="height:78%"></i><i style="height:88%"></i></div></div>
-          </div>
-        </div>
-      </div>
+    <!-- real investments screenshot -->
+    <div class="shotframe">
+      <img src="assets/shot-investments.png?v=1" alt="The real Vestora Investments module — portfolio overview, diversification score, asset allocation and AI insights" width="1440" height="1000">
     </div>
   </div>
 </section>
@@ -414,7 +382,7 @@
       </div>
       <div class="foot-col"><h5>Product</h5><a href="why-vestora.html">Why Vestora</a><a href="features.html">Features</a><a href="ai-copilot.html">AI Copilot</a><a href="security.html">Security</a><a href="pricing.html">Pricing</a><a href="roadmap.html">Roadmap</a></div>
       <div class="foot-col"><h5>Download</h5><a href="download.html" class="js-dl" data-os="Windows">Windows app</a><a href="#notify" data-notify="macOS">macOS</a><a href="#notify" data-notify="mobile">Android &amp; iOS</a><a href="#notify" data-notify="Linux">Linux</a></div>
-      <div class="foot-col"><h5>Company</h5><a href="why-vestora.html">About</a><a href="mailto:hello@vestora.app">Contact</a><a href="https://github.com/upasanikn-sys/vestora">GitHub</a><a href="security.html">Privacy</a></div>
+      <div class="foot-col"><h5>Company</h5><a href="why-vestora.html">About</a><a href="mailto:hello@vestora.app">Contact</a><a href="security.html">Privacy</a></div>
     </div>
     <div class="foot-bottom">
       <span class="discl">Vestora is a personal tracking &amp; planning tool — not SEBI-registered investment advice, and it never moves real money. Market data is delayed and unofficial. © 2026 Vestora.</span>
@@ -423,6 +391,6 @@
   </div>
 </footer>
 
-<script src="assets/vestora.js?v=5" defer></script>
+<script src="assets/vestora.js?v=6" defer></script>
 </body>
 </html>
