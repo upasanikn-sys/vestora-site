@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/vestora.css?v=10">
+<link rel="stylesheet" href="assets/vestora.css?v=11">
 </head>
 <body>
 
@@ -40,7 +40,7 @@
   <div class="lsum">
     <b>Plain-English summary:</b> Vestora has no server holding your data, so there is nothing for an
     attacker to breach remotely — that is the core of the design. Secrets you protect with a
-    passphrase (vault documents, backups) are sealed with <b>scrypt-derived authenticated
+    passphrase (vault documents, backups) are sealed with <b>scrypt-derived AES-256-GCM
     encryption</b>; the main working database is a local file guarded by your device, so we recommend
     OS disk encryption. This page states exactly what is protected, how, and — just as important —
     what is not.
@@ -71,7 +71,7 @@
   <p><b>Honest detail:</b> the main working database is <b>not encrypted at rest by the app</b>. It
   is protected by your operating-system account and whatever disk encryption your device uses. This
   is a deliberate early-access trade-off — the app works with zero setup and no master password to
-  lose — and full at-rest database encryption is on the roadmap. Until then we recommend enabling
+  lose — and full at-rest database encryption is scheduled on the <a href="roadmap.html">roadmap</a> (Q3 2026). Until then we recommend enabling
   <b>BitLocker / Windows Device Encryption</b>, which encrypts the database (and everything else)
   whenever the machine is off.</p>
 
@@ -82,9 +82,11 @@
     <li><b>Key derivation:</b> your passphrase is run through <b>scrypt</b> (n=2<sup>14</sup>, r=8,
     p=1) with a fresh random 16-byte salt per file, producing a 32-byte key. scrypt is deliberately
     memory-hard, which makes brute-forcing passphrases expensive.</li>
-    <li><b>Encryption:</b> the derived key seals the file with <b>Fernet authenticated encryption —
-    AES-128-CBC with an HMAC-SHA256 integrity tag</b>. A tampered or wrongly-keyed file fails
-    authentication instead of decrypting to garbage.</li>
+    <li><b>Encryption:</b> the derived key seals the file with <b>AES-256-GCM</b>, using a fresh
+    random 12-byte nonce per file. GCM is authenticated encryption — a tampered or wrongly-keyed
+    file fails authentication instead of decrypting to garbage. Vault files written by earlier
+    early-access builds (Fernet: AES-128-CBC + HMAC-SHA256) remain readable and are transparently
+    re-encrypted to AES-256-GCM the next time they are opened with the right passphrase.</li>
     <li><b>Zero knowledge:</b> the passphrase and derived key are never stored, anywhere. A wrong
     passphrase cannot decrypt, and a lost passphrase cannot be recovered — by you, by us, by
     anyone. That is the point.</li>
@@ -98,7 +100,8 @@
   <h2>4. Encrypted backup &amp; sync — your key, your storage</h2>
   <ul>
     <li>A backup snapshots the database using SQLite's online backup API (safe while the app runs),
-    then encrypts the snapshot with the <b>same scrypt → Fernet scheme</b> as the vault, under a
+    then encrypts the snapshot with the <b>same scrypt → AES-256-GCM scheme</b> as the vault
+    (envelope v2; v1 envelopes from earlier builds remain restorable), under a
     passphrase you choose.</li>
     <li>The result is a single opaque encrypted blob written to a <b>folder you pick</b> — including
     a folder your own Dropbox/OneDrive/Drive client syncs. Your cloud provider stores ciphertext it
@@ -196,6 +199,6 @@
   </div>
 </footer>
 
-<script src="assets/vestora.js?v=10" defer></script>
+<script src="assets/vestora.js?v=11" defer></script>
 </body>
 </html>
