@@ -11,6 +11,21 @@ var DOWNLOAD_URL = "";   // e.g. "https://vestora.gumroad.com/l/vestora"
 (function () {
   "use strict";
 
+  /* --- toast: visible confirmation for mailto-based CTAs --- */
+  var toast = document.createElement("div");
+  toast.className = "toast"; toast.setAttribute("role", "status"); toast.setAttribute("aria-live", "polite");
+  document.body.appendChild(toast);
+  var toastTimer;
+  function showToast(html) {
+    toast.innerHTML = html; toast.classList.add("on");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove("on"); }, 7000);
+  }
+  function mailtoDone() {
+    showToast("<b>Email draft opened.</b> Send it and you're done — a human replies within 48 hours " +
+      "(check spam). No email app? Write to <b>hello@vestora.app</b>.");
+  }
+
   /* --- Windows download buttons (.js-dl) --- */
   document.querySelectorAll(".js-dl").forEach(function (el) {
     el.addEventListener("click", function (e) {
@@ -19,6 +34,7 @@ var DOWNLOAD_URL = "";   // e.g. "https://vestora.gumroad.com/l/vestora"
       window.location.href = "mailto:hello@vestora.app?subject=" +
         encodeURIComponent("Vestora for Windows — early access request") +
         "&body=" + encodeURIComponent("Hi — I'd like early access to Vestora for Windows.");
+      mailtoDone();
     });
   });
 
@@ -29,18 +45,53 @@ var DOWNLOAD_URL = "";   // e.g. "https://vestora.gumroad.com/l/vestora"
       var p = el.getAttribute("data-notify");
       window.location.href = "mailto:hello@vestora.app?subject=" +
         encodeURIComponent("Notify me — Vestora for " + p);
+      mailtoDone();
     });
   });
 
-  /* --- mobile menu --- */
+  /* --- mobile menu (aria-expanded tracked) --- */
   var mb = document.querySelector(".menu-btn");
   var mm = document.querySelector(".mobile-menu");
   if (mb && mm) {
-    mb.addEventListener("click", function () { mm.classList.toggle("open"); });
+    mb.setAttribute("aria-expanded", "false");
+    mb.addEventListener("click", function () {
+      var open = mm.classList.toggle("open");
+      mb.setAttribute("aria-expanded", open ? "true" : "false");
+    });
     mm.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", function () { mm.classList.remove("open"); });
+      a.addEventListener("click", function () {
+        mm.classList.remove("open"); mb.setAttribute("aria-expanded", "false");
+      });
     });
   }
+
+  /* --- Resources dropdown: keyboard + touch accessible (hover still works via CSS) --- */
+  document.querySelectorAll(".dropdown").forEach(function (dd) {
+    var trigger = dd.querySelector(":scope > a");
+    var menu = dd.querySelector(".dropdown-menu");
+    if (!trigger || !menu) return;
+    trigger.setAttribute("aria-haspopup", "true");
+    trigger.setAttribute("aria-expanded", "false");
+    function setOpen(open) {
+      dd.classList.toggle("open", open);
+      trigger.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    trigger.addEventListener("click", function (e) {
+      e.preventDefault();                        // first activation opens the menu instead of navigating
+      setOpen(!dd.classList.contains("open"));
+    });
+    dd.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { setOpen(false); trigger.focus(); }
+    });
+    document.addEventListener("click", function (e) {
+      if (!dd.contains(e.target)) setOpen(false);
+    });
+  });
+
+  /* --- decorative inline SVGs: hide from screen readers --- */
+  document.querySelectorAll("svg:not([role])").forEach(function (s) {
+    s.setAttribute("aria-hidden", "true");
+  });
 
   /* --- nav shadow on scroll --- */
   var hdr = document.querySelector("header");
@@ -50,13 +101,23 @@ var DOWNLOAD_URL = "";   // e.g. "https://vestora.gumroad.com/l/vestora"
     });
   }
 
-  /* --- FAQ accordion (pricing) --- */
+  /* --- FAQ accordion (pricing) — keyboard accessible --- */
   document.querySelectorAll(".faq-q").forEach(function (q) {
-    q.addEventListener("click", function () {
+    q.setAttribute("role", "button");
+    q.setAttribute("tabindex", "0");
+    q.setAttribute("aria-expanded", "false");
+    function toggle() {
       var item = q.closest(".faq-item");
       var open = item.classList.contains("open");
-      document.querySelectorAll(".faq-item.open").forEach(function (i) { i.classList.remove("open"); });
-      if (!open) item.classList.add("open");
+      document.querySelectorAll(".faq-item.open").forEach(function (i) {
+        i.classList.remove("open");
+        var qq = i.querySelector(".faq-q"); if (qq) qq.setAttribute("aria-expanded", "false");
+      });
+      if (!open) { item.classList.add("open"); q.setAttribute("aria-expanded", "true"); }
+    }
+    q.addEventListener("click", toggle);
+    q.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
     });
   });
 
@@ -103,6 +164,7 @@ var DOWNLOAD_URL = "";   // e.g. "https://vestora.gumroad.com/l/vestora"
         encodeURIComponent("Keep me posted on Vestora") +
         "&body=" + encodeURIComponent("Please add me to the update list." + (val ? " My email: " + val : ""));
       if (input) input.value = "";
+      if (typeof mailtoDone === "function") mailtoDone();
     });
   });
 })();

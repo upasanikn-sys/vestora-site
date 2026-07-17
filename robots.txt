@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://upasanikn-sys.github.io/vestora-site/sitemap.xml
