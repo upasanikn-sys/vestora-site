@@ -1,5 +1,5 @@
 # Vestora Website — Production Readiness Report
-**Date:** 18 July 2026 · **Site:** https://upasanikn-sys.github.io/vestora-site/ · **Asset version:** v=14
+**Date:** 18 July 2026 · **Site:** https://upasanikn-sys.github.io/vestora-site/ · **Asset version:** v=16
 
 ---
 
@@ -20,8 +20,14 @@ Full cross-page audit against the 17-phase spec. Changes:
 - **Consistency (Phase 2):** titles all unique, no duplicate descriptions, one voice on
   local-first/encryption/AI/pricing across every page.
 
+- **Responsive down to 320px (Phase 13):** wrapped the security-architecture data table in a scroll
+  container, collapsed the security comparison grid / AI-cards on tiny screens, and added
+  `overflow-x:clip` on the root to stop decorative glows bleeding. **16/16 pages now overflow-free at
+  320, 360, 390 and 768px** (previously 4 pages bled 5–17px at 320px only).
+
 Verified: nav labels consistent site-wide, 0 stray "Download Vestora" CTAs, 0 broken links,
-16/16 pages overflow-free at 360px, manifest valid, all icons load, PWA head on every page.
+16/16 pages overflow-free at 320–768px, manifest valid, all icons load, PWA head on every page,
+0 console errors.
 
 ---
 

@@ -11,7 +11,8 @@
   --ease:cubic-bezier(.2,.8,.2,1);
 }
 *{box-sizing:border-box; margin:0; padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth; overflow-x:clip}   /* clip (not hidden) — kills decorative-glow bleed without breaking sticky */
+body{overflow-x:clip}
 body{
   background:var(--bg); color:var(--text);
   font-family:'Inter',system-ui,'Segoe UI',Arial,sans-serif;
@@ -326,6 +327,14 @@ footer{padding:40px 0 36px; border-top:1px solid var(--border2); margin-top:26px
 @media (max-width:760px){
   /* section-level splits set via inline fr/px grids (no class to hook) — stack them */
   .sec [style*="grid-template-columns"]:not([style*="repeat"]){grid-template-columns:1fr!important}
+}
+/* 320px hardening — smallest phones / Windows 125% narrow */
+@media (max-width:420px){
+  h1,h2,h3,h4,.h1,.serif{overflow-wrap:anywhere}
+  /* !important: page <style> blocks load after this file and would otherwise win */
+  .vstable{grid-template-columns:1fr!important}
+  .icards{grid-template-columns:1fr!important}
+  .co-left,.co-visual{min-width:0}
 }
 @media (max-width:560px){
   .h1{font-size:34px} .sec-title{font-size:27px} .pillars{grid-template-columns:1fr 1fr}
