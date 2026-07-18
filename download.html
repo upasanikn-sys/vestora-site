@@ -8,8 +8,9 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2316294d'/%3E%3Cpath d='M8 8L13 8L16 21L19 8L24 8L16.5 26Z' fill='%23c9a44e'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/vestora.css?v=12">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"></noscript>
+<link rel="stylesheet" href="assets/vestora.css?v=13">
 <style>
 .dl-hero{display:grid; grid-template-columns:.9fr 1.1fr; gap:36px; align-items:start; padding:36px 0 18px}
 .dl-hero .h1{font-size:48px}
@@ -140,10 +141,10 @@
     <!-- showcase: real screenshots -->
     <div class="showcase">
       <div class="sc-laptop" style="padding:0;overflow:hidden;line-height:0">
-        <img src="assets/shot-dashboard.png?v=1" alt="The real Vestora desktop dashboard" style="width:100%;height:auto;display:block" width="1440" height="1000">
+        <img src="assets/shot-dashboard.png?v=1" alt="The real Vestora desktop dashboard" style="width:100%;height:auto;display:block" width="1440" height="1000" loading="lazy" decoding="async">
       </div>
       <div class="sc-phone" style="padding:0;overflow:hidden;line-height:0">
-        <img src="assets/shot-app-home.png?v=1" alt="The real Vestora mobile app home screen" style="width:100%;height:auto;display:block" width="800" height="1880">
+        <img src="assets/shot-app-home.png?v=1" alt="The real Vestora mobile app home screen" style="width:100%;height:auto;display:block" width="800" height="1880" loading="lazy" decoding="async">
       </div>
       <div class="databadge"><span class="di"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/></svg></span><div><b>Nothing uploaded by default</b><span>your data stays with you.</span></div></div>
     </div>
@@ -171,7 +172,7 @@
             <li><span class="ck">✓</span><span>A reply from <b>hello@vestora.app</b> (check spam) delivers the zip, normally within 48 hours.</span></li>
             <li><span class="ck">✓</span><span>Unzip anywhere, run Vestora.exe — your <b>14-day full trial</b> starts on first run, then the Free plan continues forever.</span></li>
             <li><span class="ck">✓</span><span>Data lives in <code style="font-size:11px">%USERPROFILE%\FinOSData</code> — back up that folder and you have everything. Uninstall = delete the app folder.</span></li>
-            <li><span class="ck">✓</span><span>Updates arrive by email with release notes; back up before updating. <span class="ph">[Public changelog page — planned]</span></span></li>
+            <li><span class="ck">✓</span><span>Updates arrive by email with release notes; back up before updating. A public changelog page is planned.</span></li>
           </ul>
         </div>
       </div>
@@ -277,7 +278,7 @@
     <div class="foot-grid">
       <div class="foot-brand">
         <a class="brand" href="index.html"><span class="mark"></span><span><span class="bt">Vestora</span><span class="bs">Build Wealth. With Clarity.</span></span></a>
-        <p>A privacy-first financial operating system. Understand, grow and protect your wealth with AI — running entirely on your own device.</p>
+        <p>A privacy-first financial operating system. Understand, grow and protect your wealth — on your own device.</p>
         <div class="trust-row"><div class="ti"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>No cloud · No tracking · No ads</div></div>
       </div>
       <div class="foot-col"><h5>Product</h5><a href="why-vestora.html">Why Vestora</a><a href="features.html">Features</a><a href="ai-copilot.html">AI Copilot</a><a href="security.html">Security</a><a href="pricing.html">Pricing</a><a href="roadmap.html">Roadmap</a></div>
@@ -291,6 +292,6 @@
   </div>
 </footer>
 
-<script src="assets/vestora.js?v=12" defer></script>
+<script src="assets/vestora.js?v=13" defer></script>
 </body>
 </html>

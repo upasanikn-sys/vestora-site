@@ -8,8 +8,9 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2316294d'/%3E%3Cpath d='M8 8L13 8L16 21L19 8L24 8L16.5 26Z' fill='%23c9a44e'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/vestora.css?v=12">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"></noscript>
+<link rel="stylesheet" href="assets/vestora.css?v=13">
 <link rel="canonical" href="https://upasanikn-sys.github.io/vestora-site/about.html">
 <meta property="og:title" content="About — Vestora">
 <meta property="og:description" content="Who builds Vestora and why: an independent, India-based project to give people a private financial operating system that never uploads their data by default.">
@@ -78,16 +79,10 @@
   <h2>Who is behind it</h2>
   <p>Vestora is designed, built and supported by an independent developer in India. Support email
   replies come from the person who wrote the code.</p>
-  <!-- PLACEHOLDER: founder identity — OWNER DECISION REQUIRED.
-       The owner has (so far) chosen to keep personal details off this site for privacy.
-       Before paid launch, credibility for a finance product strongly favours publishing:
-       founder name, photo, brief background, LinkedIn, and the legal operating name. -->
-  <div class="lnote">
-    <span class="ph">[Founder name — to be published]</span> ·
-    <span class="ph">[Photo]</span> ·
-    <span class="ph">[Background &amp; LinkedIn]</span> ·
-    <span class="ph">[Legal operating name &amp; business address — required before accepting payments]</span>
-  </div>
+  <!-- OWNER DECISION before paid launch: publish founder name, photo, background/LinkedIn,
+       and the legal operating name + business address (required to accept payments).
+       Kept as neutral prose for now per the owner's privacy preference. -->
+  <p class="phnote">A fuller founder profile and the registered operating entity will be published here before paid launch.</p>
 
   <h2>Where the product stands today</h2>
   <ul>
@@ -97,7 +92,7 @@
     documented <a href="security-architecture.html">security architecture</a>.</li>
     <li>macOS, Android and iOS are in development; database encryption at rest is scheduled on the
     <a href="roadmap.html">roadmap</a>.</li>
-    <li><span class="ph">[Public changelog page — planned; release notes currently ship by email]</span></li>
+    <li>Release notes currently ship by email; a public changelog page is planned.</li>
   </ul>
 
   <h2>Accountability</h2>
@@ -130,6 +125,6 @@
   </div>
 </footer>
 
-<script src="assets/vestora.js?v=12" defer></script>
+<script src="assets/vestora.js?v=13" defer></script>
 </body>
 </html>

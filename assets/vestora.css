@@ -173,7 +173,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .bdg-soon{color:var(--purp); background:rgba(169,154,240,.12); border:1px solid rgba(169,154,240,.3)}
 .shotcap{font-size:11px; color:var(--muted); text-align:center; padding:8px 0 10px; line-height:1;
   background:#0b1120; letter-spacing:.02em}
-.ph{color:var(--purp); font-size:.92em; border-bottom:1px dashed rgba(169,154,240,.5)}
+.phnote{color:var(--muted); font-size:.92em; font-style:italic}
+.tablewrap{overflow-x:auto; -webkit-overflow-scrolling:touch}
 .method{margin-top:10px; border:1px solid var(--border2); border-radius:10px; background:rgba(255,255,255,.02)}
 .method summary{cursor:pointer; font-size:11px; font-weight:600; color:var(--gold); padding:8px 12px; list-style:none}
 .method summary::before{content:"▸ "; transition:.15s}
@@ -311,15 +312,24 @@ footer{padding:40px 0 36px; border-top:1px solid var(--border2); margin-top:26px
 /* ---------- responsive ---------- */
 @media (max-width:960px){
   .navlinks{display:none} .menu-btn{display:block} .login{display:none}
+  .nav-cta .btn-gold{display:none}          /* hamburger carries Download on mobile — prevents nav overflow */
   .hero-grid{grid-template-columns:1fr; gap:36px} .h1{font-size:42px}
   .pillars{grid-template-columns:repeat(3,1fr); gap:26px}
   .fgrid{grid-template-columns:repeat(2,1fr)}
+  /* sections that set columns via inline style can't be reached by class rules — force them here */
+  .fgrid[style*="repeat"],.pillars[style*="repeat"]{grid-template-columns:repeat(2,1fr)!important}
   .flow3{grid-template-columns:1fr}
   .final-band{grid-template-columns:1fr} .final-copy{order:2}
   .foot-grid{grid-template-columns:1fr 1fr}
+  .cmp{min-width:520px}                     /* table scrolls inside .tablewrap instead of stretching the page */
+}
+@media (max-width:760px){
+  /* section-level splits set via inline fr/px grids (no class to hook) — stack them */
+  .sec [style*="grid-template-columns"]:not([style*="repeat"]){grid-template-columns:1fr!important}
 }
 @media (max-width:560px){
   .h1{font-size:34px} .sec-title{font-size:27px} .pillars{grid-template-columns:1fr 1fr}
+  .fgrid[style*="repeat"],.pillars[style*="repeat"]{grid-template-columns:1fr!important}
   .fgrid{grid-template-columns:1fr} .trust-strip{gap:16px} .foot-grid{grid-template-columns:1fr}
   .hero{padding:40px 0 30px} .band{padding:32px 18px}
   /* dashboard mock: shrink so it never overflows the phone screen */

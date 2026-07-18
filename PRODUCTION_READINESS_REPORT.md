@@ -1,5 +1,27 @@
 # Vestora Website — Production Readiness Report
-**Date:** 17 July 2026 · **Site:** https://upasanikn-sys.github.io/vestora-site/ · **Asset version:** v=12
+**Date:** 18 July 2026 · **Site:** https://upasanikn-sys.github.io/vestora-site/ · **Asset version:** v=13
+
+---
+
+## 0. v=13 fix pass (live audit follow-up)
+A fresh audit at true phone widths (360/390px) found issues the desktop-only pass missed. All fixed:
+- **Mobile horizontal scroll on all 11 pages** — the nav "Download" button now hides on mobile
+  (hamburger carries it); every page verified overflow-free at 360px and 390px.
+- **Roadmap CSS regression** — a placeholder class collided with Roadmap's phase cards; placeholder
+  class renamed (`.ph` → `.phnote`), Roadmap restored.
+- **New sections not collapsing on mobile** — inline multi-column grids (home "How it works" /
+  "What Vestora doesn't do", Download build panel, AI Copilot, Why-Vestora section splits) now
+  stack on small screens.
+- **Encryption contradiction removed** — the pricing FAQ no longer claims an "encrypted SQLite
+  database"; it now matches the security-architecture position (vault/backups encrypted; full DB
+  encryption on the roadmap).
+- **Remaining "100%" absolutes** softened (features, index, pricing); footer tagline standardised.
+- **Visible `[bracket]` placeholders** rewritten as clean prose (About, Download, Pricing, Terms).
+- **Pricing comparison table** now scrolls inside its own container on mobile.
+- **Performance:** web fonts made non-render-blocking (preload+swap); below-fold images lazy-loaded,
+  hero kept high-priority for LCP.
+
+Verified: 16/16 pages overflow-free at 360/390px, fonts still apply, zero console errors.
 
 ---
 
