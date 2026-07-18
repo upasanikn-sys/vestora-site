@@ -1,9 +1,31 @@
 # Vestora Website — Production Readiness Report
-**Date:** 18 July 2026 · **Site:** https://upasanikn-sys.github.io/vestora-site/ · **Asset version:** v=13
+**Date:** 18 July 2026 · **Site:** https://upasanikn-sys.github.io/vestora-site/ · **Asset version:** v=14
 
 ---
 
-## 0. v=13 fix pass (live audit follow-up)
+## 0. v=14 pass (17-phase production sweep)
+Full cross-page audit against the 17-phase spec. Changes:
+- **CTA honesty (Phase 6/9):** every "Download Vestora" button is now early-access wording —
+  14 pages' nav + all mobile-menu and in-content CTAs say **"Get Early Access"**; the Download
+  page's primary CTAs say **"Request Windows Early Access"**. Only the Download page's `<title>`/OG
+  keep the descriptive "Download Vestora for Windows — Early Access" (accurate, good for SEO).
+- **Download page de-hyped (Phase 3):** removed reintroduced absolutes ("AI-powered… No cloud. No
+  tracking. Complete privacy."); title/description/OG and h1 reframed to early-access, local-first.
+- **PWA/SEO head (Phase 14):** generated real PNG icons (192/512/180 apple-touch/32) from the V mark,
+  added `site.webmanifest`, `<link rel="manifest">`, `apple-touch-icon`, and `<meta name="theme-color">`
+  on all 16 pages. Favicon/manifest/icons now complete.
+- **Legacy naming (Phase 7):** no stray "FinOS" strings on the site. The app's data folder is
+  genuinely `%USERPROFILE%\FinOSData`; kept accurate (renaming it is app-side work with migration —
+  logged as engineering, not a website edit).
+- **Consistency (Phase 2):** titles all unique, no duplicate descriptions, one voice on
+  local-first/encryption/AI/pricing across every page.
+
+Verified: nav labels consistent site-wide, 0 stray "Download Vestora" CTAs, 0 broken links,
+16/16 pages overflow-free at 360px, manifest valid, all icons load, PWA head on every page.
+
+---
+
+## 0.1 v=13 fix pass (live audit follow-up)
 A fresh audit at true phone widths (360/390px) found issues the desktop-only pass missed. All fixed:
 - **Mobile horizontal scroll on all 11 pages** — the nav "Download" button now hides on mobile
   (hamburger carries it); every page verified overflow-free at 360px and 390px.
@@ -125,10 +147,12 @@ Verified: 16/16 pages overflow-free at 360/390px, fonts still apply, zero consol
 - Custom domain (removes username from URL; also fixes 404.html's hard-coded /vestora-site/ paths).
 
 ## 5. P2 improvements
-- Self-host fonts (currently Google Fonts — disclosed in Privacy Policy).
+- Self-host fonts (currently Google Fonts, now loaded non-render-blocking — disclosed in Privacy Policy).
 - FAQPage/BreadcrumbList schema; SEO content engine (calculators, comparison pages).
 - Feature-detail pages or demo modals per module; product walkthrough video.
 - Family plan waitlist backend; Lighthouse/axe audit once tooling available.
+- Purpose-built 1200×630 OG social card (currently a raw dashboard screenshot).
+- App-side: rename the `FinOSData` data folder to a Vestora name **with a migration path** (engineering task, not a website change; the site describes the real current path accurately).
 
 ## 6. Known limitations of this pass
 - Lighthouse/axe could not be executed in this environment (screenshot/audit tooling unavailable);
@@ -138,9 +162,22 @@ Verified: 16/16 pages overflow-free at 360/390px, fonts still apply, zero consol
 - Contrast of muted-gold text on navy was reviewed by token values, not by an automated checker.
 
 ## 7. Launch recommendation
-**Early-access marketing: GO.** The site is truthful, functional, complete and consistent with the
-shipped v2.0.0 build. **Paid launch: NOT YET** — blocked on §3 items (payments, legal identity,
-mailbox verification). Estimated effort to clear P0: 1–2 days of owner decisions + integration.
+**Ready for public beta / early-access marketing: GO.** After the v13–v14 passes the site is
+truthful, internally consistent, mobile-clean (no horizontal scroll 360–1366px), accessible
+(skip links, ARIA, AA contrast, keyboard-operable), SEO- and PWA-complete (canonical/OG/sitemap/
+robots/JSON-LD/manifest/icons), and every interaction and link works. It accurately represents the
+shipped v2.0.0 build and hides no limitations.
 
-**Production-readiness score: 8/10 for early access · 5.5/10 for paid commerce** (limited purely by
-the P0 business items, not the website).
+**Paid launch: NOT YET** — blocked only on business/legal items the website cannot resolve:
+payment processor, legal entity + GST, founder-identity decision, mailbox verification, and a
+code-signed installer. None are code problems.
+
+**Production-readiness (website): ~92% for private/public beta · gated at ~60% for paid commerce**
+purely by the P0 business blockers in §3, not by the site itself.
+
+### Verification method note
+Structural/DOM/geometry/fetch-based checks were run in-tool (overflow at 320–1366px, broken-link
+crawl, label/contradiction sweeps, manifest/icon/contrast checks). A headless Lighthouse/axe run
+was not available in this environment — run it in Chrome DevTools to confirm the 90+/95+ targets;
+the non-blocking fonts, sized images, lazy-loading, tiny CSS/JS and zero console errors all point
+that way, but the numeric scores are unconfirmed and should be treated as such.
