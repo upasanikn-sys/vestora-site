@@ -11,30 +11,73 @@ var DOWNLOAD_URL = "";   // e.g. "https://vestora.gumroad.com/l/vestora"
 (function () {
   "use strict";
 
-  /* --- toast: visible confirmation for mailto-based CTAs --- */
-  var toast = document.createElement("div");
-  toast.className = "toast"; toast.setAttribute("role", "status"); toast.setAttribute("aria-live", "polite");
-  document.body.appendChild(toast);
-  var toastTimer;
-  function showToast(html) {
-    toast.innerHTML = html; toast.classList.add("on");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { toast.classList.remove("on"); }, 7000);
-  }
-  function mailtoDone() {
-    showToast("<b>Email draft opened.</b> Send it and you're done — a human replies within 48 hours " +
-      "(check spam). No email app? Write to <b>hello@vestora.app</b>.");
-  }
+  var EMAIL = "hello@vestora.app";
 
-  /* --- Windows download buttons (.js-dl) --- */
+  /* --- early-access dialog: mailto alone dead-ends when there's no default mail
+         app (Windows shows an app-chooser; picking a browser does nothing). This
+         always works — the address is shown, copyable, with mailto as a bonus. --- */
+  var back = document.createElement("div");
+  back.className = "vmodal-back"; back.setAttribute("role", "dialog");
+  back.setAttribute("aria-modal", "true"); back.setAttribute("aria-labelledby", "vmodal-title");
+  document.body.appendChild(back);
+  var lastFocus = null;
+
+  function closeModal() {
+    back.classList.remove("on");
+    back.innerHTML = "";
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function openModal(opts) {
+    lastFocus = document.activeElement;
+    var subject = encodeURIComponent(opts.subject);
+    var body = encodeURIComponent(opts.body || "");
+    back.innerHTML =
+      '<div class="vmodal">' +
+        '<button class="vmodal-close" aria-label="Close">✕</button>' +
+        '<h3 id="vmodal-title">' + opts.title + '</h3>' +
+        '<p>' + opts.desc + '</p>' +
+        '<div class="em"><span class="addr">' + EMAIL + '</span>' +
+          '<button class="copybtn" type="button">Copy</button></div>' +
+        '<div class="acts">' +
+          '<a class="btn btn-gold" href="mailto:' + EMAIL + '?subject=' + subject + '&body=' + body + '">Open email app</a>' +
+        '</div>' +
+        '<p class="hint">No email app? Copy the address and write to us from anywhere — Gmail, your phone, whatever you use. A human replies within 48 hours (please check spam).</p>' +
+      '</div>';
+    back.classList.add("on");
+    var card = back.querySelector(".vmodal");
+    var closeBtn = back.querySelector(".vmodal-close");
+    var copyBtn = back.querySelector(".copybtn");
+    closeBtn.addEventListener("click", closeModal);
+    copyBtn.addEventListener("click", function () {
+      var done = function () { copyBtn.textContent = "Copied ✓"; copyBtn.classList.add("ok"); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(EMAIL).then(done, function () { fallbackCopy(); done(); });
+      } else { fallbackCopy(); done(); }
+    });
+    function fallbackCopy() {
+      var t = document.createElement("textarea"); t.value = EMAIL; t.style.position = "fixed";
+      t.style.left = "-9999px"; document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(t);
+    }
+    setTimeout(function () { closeBtn.focus(); }, 30);
+  }
+  back.addEventListener("click", function (e) { if (e.target === back) closeModal(); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && back.classList.contains("on")) closeModal();
+  });
+
+  /* --- Windows early-access buttons (.js-dl) --- */
   document.querySelectorAll(".js-dl").forEach(function (el) {
     el.addEventListener("click", function (e) {
       if (DOWNLOAD_URL) { window.location.href = DOWNLOAD_URL; return; }
       e.preventDefault();
-      window.location.href = "mailto:hello@vestora.app?subject=" +
-        encodeURIComponent("Vestora for Windows — early access request") +
-        "&body=" + encodeURIComponent("Hi — I'd like early access to Vestora for Windows.");
-      mailtoDone();
+      openModal({
+        title: "Request Windows early access",
+        desc: "Email us and we'll send the current Windows build (v2.0.0). No account, no payment.",
+        subject: "Vestora for Windows — early access request",
+        body: "Hi — I'd like early access to Vestora for Windows."
+      });
     });
   });
 
@@ -43,9 +86,12 @@ var DOWNLOAD_URL = "";   // e.g. "https://vestora.gumroad.com/l/vestora"
     el.addEventListener("click", function (e) {
       e.preventDefault();
       var p = el.getAttribute("data-notify");
-      window.location.href = "mailto:hello@vestora.app?subject=" +
-        encodeURIComponent("Notify me — Vestora for " + p);
-      mailtoDone();
+      openModal({
+        title: "Get notified — Vestora for " + p,
+        desc: p + " isn't ready yet. Email us and we'll let you know the moment it is.",
+        subject: "Notify me — Vestora for " + p,
+        body: "Hi — please notify me when Vestora for " + p + " is available."
+      });
     });
   });
 
